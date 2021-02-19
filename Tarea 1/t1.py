@@ -28,6 +28,7 @@ class Stack:
       if not(len(self.stack) <= 0):
          print(self.stack[len(self.stack) - 1], 'was removed from the stack.')
          self.stack = self.stack[:len(self.stack) -1] 
+         self.topValue = self.stack[len(self.stack) -1]
       else:
          print('Stack is empty')  
   # Prints the current stack
@@ -58,7 +59,8 @@ class Queue:
   def pop(self):
       if not(len(self.queue) <= 0):
          print(self.queue[0], 'was removed from the queue.')
-         self.queue = self.queue[1:] 
+         self.queue = self.queue[1:]
+         self.frontValue = self.queue[0]
       else:
          print('Queue is empty')  
   # Prints the current queue
@@ -72,6 +74,9 @@ p1.top()
 p1.push(2)
 p1.push(3)
 p1.push(4)
+p1.top()
+p1.pop()
+p1.top()
 p1.print_stack()
 p1.pop()
 p1.print_stack()
