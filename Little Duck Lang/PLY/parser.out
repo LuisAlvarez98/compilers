@@ -1,0 +1,1164 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> programa
+Rule 1     programa -> PROGRAM ID SEMCOLON vars bloque
+Rule 2     programa -> PROGRAM ID SEMCOLON bloque
+Rule 3     vars -> VAR recvars
+Rule 4     recvars -> recids COLON tipo SEMCOLON recvars
+Rule 5     recvars -> recids COLON tipo SEMCOLON
+Rule 6     recids -> ID
+Rule 7     recids -> ID COMMA recids
+Rule 8     tipo -> TINT
+Rule 9     tipo -> TFLOAT
+Rule 10    tipo -> TSTRING
+Rule 11    bloque -> LEFTKEY estatutos RIGHTKEY
+Rule 12    bloque -> LEFTKEY RIGHTKEY
+Rule 13    estatutos -> estatuto estatutos
+Rule 14    estatutos -> estatuto
+Rule 15    estatuto -> asignacion
+Rule 16    estatuto -> escritura
+Rule 17    estatuto -> condicion
+Rule 18    asignacion -> ID EQUALS expresion SEMCOLON
+Rule 19    expresion -> exp LESS exp
+Rule 20    expresion -> exp GREATER exp
+Rule 21    expresion -> exp DIFF exp
+Rule 22    expresion -> exp
+Rule 23    condicion -> IF LEFTPAR expresion RIGHTPAR THEN bloque
+Rule 24    condicion -> IF LEFTPAR expresion RIGHTPAR THEN bloque ELSE bloque
+Rule 25    exp -> termino recexp
+Rule 26    exp -> termino
+Rule 27    recexp -> EX exp
+Rule 28    termino -> factor recterm
+Rule 29    termino -> factor
+Rule 30    recterm -> TERM termino
+Rule 31    factor -> LEFTPAR expresion RIGHTPAR
+Rule 32    factor -> EX cte
+Rule 33    factor -> cte
+Rule 34    escritura -> PRINT LEFTPAR recesc RIGHTPAR SEMCOLON
+Rule 35    recesc -> expresion COMMA recesc
+Rule 36    recesc -> STRING COMMA recesc
+Rule 37    recesc -> expresion
+Rule 38    recesc -> STRING
+Rule 39    cte -> ID
+Rule 40    cte -> INT
+Rule 41    cte -> STRING
+Rule 42    cte -> FLOAT
+
+Terminals, with rules where they appear
+
+COLON                : 4 5
+COMMA                : 7 35 36
+DIFF                 : 21
+ELSE                 : 24
+EQUALS               : 18
+EX                   : 27 32
+FLOAT                : 42
+GREATER              : 20
+ID                   : 1 2 6 7 18 39
+IF                   : 23 24
+INT                  : 40
+LEFTKEY              : 11 12
+LEFTPAR              : 23 24 31 34
+LESS                 : 19
+PRINT                : 34
+PROGRAM              : 1 2
+RIGHTKEY             : 11 12
+RIGHTPAR             : 23 24 31 34
+SEMCOLON             : 1 2 4 5 18 34
+STRING               : 36 38 41
+TERM                 : 30
+TFLOAT               : 9
+THEN                 : 23 24
+TINT                 : 8
+TSTRING              : 10
+VAR                  : 3
+error                : 
+
+Nonterminals, with rules where they appear
+
+asignacion           : 15
+bloque               : 1 2 23 24 24
+condicion            : 17
+cte                  : 32 33
+escritura            : 16
+estatuto             : 13 14
+estatutos            : 11 13
+exp                  : 19 19 20 20 21 21 22 27
+expresion            : 18 23 24 31 35 37
+factor               : 28 29
+programa             : 0
+recesc               : 34 35 36
+recexp               : 25
+recids               : 4 5 7
+recterm              : 28
+recvars              : 3 4
+termino              : 25 26 30
+tipo                 : 4 5
+vars                 : 1
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . programa
+    (1) programa -> . PROGRAM ID SEMCOLON vars bloque
+    (2) programa -> . PROGRAM ID SEMCOLON bloque
+
+    PROGRAM         shift and go to state 2
+
+    programa                       shift and go to state 1
+
+state 1
+
+    (0) S' -> programa .
+
+
+
+state 2
+
+    (1) programa -> PROGRAM . ID SEMCOLON vars bloque
+    (2) programa -> PROGRAM . ID SEMCOLON bloque
+
+    ID              shift and go to state 3
+
+
+state 3
+
+    (1) programa -> PROGRAM ID . SEMCOLON vars bloque
+    (2) programa -> PROGRAM ID . SEMCOLON bloque
+
+    SEMCOLON        shift and go to state 4
+
+
+state 4
+
+    (1) programa -> PROGRAM ID SEMCOLON . vars bloque
+    (2) programa -> PROGRAM ID SEMCOLON . bloque
+    (3) vars -> . VAR recvars
+    (11) bloque -> . LEFTKEY estatutos RIGHTKEY
+    (12) bloque -> . LEFTKEY RIGHTKEY
+
+    VAR             shift and go to state 7
+    LEFTKEY         shift and go to state 8
+
+    vars                           shift and go to state 5
+    bloque                         shift and go to state 6
+
+state 5
+
+    (1) programa -> PROGRAM ID SEMCOLON vars . bloque
+    (11) bloque -> . LEFTKEY estatutos RIGHTKEY
+    (12) bloque -> . LEFTKEY RIGHTKEY
+
+    LEFTKEY         shift and go to state 8
+
+    bloque                         shift and go to state 9
+
+state 6
+
+    (2) programa -> PROGRAM ID SEMCOLON bloque .
+
+    $end            reduce using rule 2 (programa -> PROGRAM ID SEMCOLON bloque .)
+
+
+state 7
+
+    (3) vars -> VAR . recvars
+    (4) recvars -> . recids COLON tipo SEMCOLON recvars
+    (5) recvars -> . recids COLON tipo SEMCOLON
+    (6) recids -> . ID
+    (7) recids -> . ID COMMA recids
+
+    ID              shift and go to state 12
+
+    recvars                        shift and go to state 10
+    recids                         shift and go to state 11
+
+state 8
+
+    (11) bloque -> LEFTKEY . estatutos RIGHTKEY
+    (12) bloque -> LEFTKEY . RIGHTKEY
+    (13) estatutos -> . estatuto estatutos
+    (14) estatutos -> . estatuto
+    (15) estatuto -> . asignacion
+    (16) estatuto -> . escritura
+    (17) estatuto -> . condicion
+    (18) asignacion -> . ID EQUALS expresion SEMCOLON
+    (34) escritura -> . PRINT LEFTPAR recesc RIGHTPAR SEMCOLON
+    (23) condicion -> . IF LEFTPAR expresion RIGHTPAR THEN bloque
+    (24) condicion -> . IF LEFTPAR expresion RIGHTPAR THEN bloque ELSE bloque
+
+    RIGHTKEY        shift and go to state 14
+    ID              shift and go to state 19
+    PRINT           shift and go to state 20
+    IF              shift and go to state 21
+
+    estatutos                      shift and go to state 13
+    estatuto                       shift and go to state 15
+    asignacion                     shift and go to state 16
+    escritura                      shift and go to state 17
+    condicion                      shift and go to state 18
+
+state 9
+
+    (1) programa -> PROGRAM ID SEMCOLON vars bloque .
+
+    $end            reduce using rule 1 (programa -> PROGRAM ID SEMCOLON vars bloque .)
+
+
+state 10
+
+    (3) vars -> VAR recvars .
+
+    LEFTKEY         reduce using rule 3 (vars -> VAR recvars .)
+
+
+state 11
+
+    (4) recvars -> recids . COLON tipo SEMCOLON recvars
+    (5) recvars -> recids . COLON tipo SEMCOLON
+
+    COLON           shift and go to state 22
+
+
+state 12
+
+    (6) recids -> ID .
+    (7) recids -> ID . COMMA recids
+
+    COLON           reduce using rule 6 (recids -> ID .)
+    COMMA           shift and go to state 23
+
+
+state 13
+
+    (11) bloque -> LEFTKEY estatutos . RIGHTKEY
+
+    RIGHTKEY        shift and go to state 24
+
+
+state 14
+
+    (12) bloque -> LEFTKEY RIGHTKEY .
+
+    $end            reduce using rule 12 (bloque -> LEFTKEY RIGHTKEY .)
+    ELSE            reduce using rule 12 (bloque -> LEFTKEY RIGHTKEY .)
+    ID              reduce using rule 12 (bloque -> LEFTKEY RIGHTKEY .)
+    PRINT           reduce using rule 12 (bloque -> LEFTKEY RIGHTKEY .)
+    IF              reduce using rule 12 (bloque -> LEFTKEY RIGHTKEY .)
+    RIGHTKEY        reduce using rule 12 (bloque -> LEFTKEY RIGHTKEY .)
+
+
+state 15
+
+    (13) estatutos -> estatuto . estatutos
+    (14) estatutos -> estatuto .
+    (13) estatutos -> . estatuto estatutos
+    (14) estatutos -> . estatuto
+    (15) estatuto -> . asignacion
+    (16) estatuto -> . escritura
+    (17) estatuto -> . condicion
+    (18) asignacion -> . ID EQUALS expresion SEMCOLON
+    (34) escritura -> . PRINT LEFTPAR recesc RIGHTPAR SEMCOLON
+    (23) condicion -> . IF LEFTPAR expresion RIGHTPAR THEN bloque
+    (24) condicion -> . IF LEFTPAR expresion RIGHTPAR THEN bloque ELSE bloque
+
+    RIGHTKEY        reduce using rule 14 (estatutos -> estatuto .)
+    ID              shift and go to state 19
+    PRINT           shift and go to state 20
+    IF              shift and go to state 21
+
+    estatuto                       shift and go to state 15
+    estatutos                      shift and go to state 25
+    asignacion                     shift and go to state 16
+    escritura                      shift and go to state 17
+    condicion                      shift and go to state 18
+
+state 16
+
+    (15) estatuto -> asignacion .
+
+    ID              reduce using rule 15 (estatuto -> asignacion .)
+    PRINT           reduce using rule 15 (estatuto -> asignacion .)
+    IF              reduce using rule 15 (estatuto -> asignacion .)
+    RIGHTKEY        reduce using rule 15 (estatuto -> asignacion .)
+
+
+state 17
+
+    (16) estatuto -> escritura .
+
+    ID              reduce using rule 16 (estatuto -> escritura .)
+    PRINT           reduce using rule 16 (estatuto -> escritura .)
+    IF              reduce using rule 16 (estatuto -> escritura .)
+    RIGHTKEY        reduce using rule 16 (estatuto -> escritura .)
+
+
+state 18
+
+    (17) estatuto -> condicion .
+
+    ID              reduce using rule 17 (estatuto -> condicion .)
+    PRINT           reduce using rule 17 (estatuto -> condicion .)
+    IF              reduce using rule 17 (estatuto -> condicion .)
+    RIGHTKEY        reduce using rule 17 (estatuto -> condicion .)
+
+
+state 19
+
+    (18) asignacion -> ID . EQUALS expresion SEMCOLON
+
+    EQUALS          shift and go to state 26
+
+
+state 20
+
+    (34) escritura -> PRINT . LEFTPAR recesc RIGHTPAR SEMCOLON
+
+    LEFTPAR         shift and go to state 27
+
+
+state 21
+
+    (23) condicion -> IF . LEFTPAR expresion RIGHTPAR THEN bloque
+    (24) condicion -> IF . LEFTPAR expresion RIGHTPAR THEN bloque ELSE bloque
+
+    LEFTPAR         shift and go to state 28
+
+
+state 22
+
+    (4) recvars -> recids COLON . tipo SEMCOLON recvars
+    (5) recvars -> recids COLON . tipo SEMCOLON
+    (8) tipo -> . TINT
+    (9) tipo -> . TFLOAT
+    (10) tipo -> . TSTRING
+
+    TINT            shift and go to state 30
+    TFLOAT          shift and go to state 31
+    TSTRING         shift and go to state 32
+
+    tipo                           shift and go to state 29
+
+state 23
+
+    (7) recids -> ID COMMA . recids
+    (6) recids -> . ID
+    (7) recids -> . ID COMMA recids
+
+    ID              shift and go to state 12
+
+    recids                         shift and go to state 33
+
+state 24
+
+    (11) bloque -> LEFTKEY estatutos RIGHTKEY .
+
+    $end            reduce using rule 11 (bloque -> LEFTKEY estatutos RIGHTKEY .)
+    ELSE            reduce using rule 11 (bloque -> LEFTKEY estatutos RIGHTKEY .)
+    ID              reduce using rule 11 (bloque -> LEFTKEY estatutos RIGHTKEY .)
+    PRINT           reduce using rule 11 (bloque -> LEFTKEY estatutos RIGHTKEY .)
+    IF              reduce using rule 11 (bloque -> LEFTKEY estatutos RIGHTKEY .)
+    RIGHTKEY        reduce using rule 11 (bloque -> LEFTKEY estatutos RIGHTKEY .)
+
+
+state 25
+
+    (13) estatutos -> estatuto estatutos .
+
+    RIGHTKEY        reduce using rule 13 (estatutos -> estatuto estatutos .)
+
+
+state 26
+
+    (18) asignacion -> ID EQUALS . expresion SEMCOLON
+    (19) expresion -> . exp LESS exp
+    (20) expresion -> . exp GREATER exp
+    (21) expresion -> . exp DIFF exp
+    (22) expresion -> . exp
+    (25) exp -> . termino recexp
+    (26) exp -> . termino
+    (28) termino -> . factor recterm
+    (29) termino -> . factor
+    (31) factor -> . LEFTPAR expresion RIGHTPAR
+    (32) factor -> . EX cte
+    (33) factor -> . cte
+    (39) cte -> . ID
+    (40) cte -> . INT
+    (41) cte -> . STRING
+    (42) cte -> . FLOAT
+
+    LEFTPAR         shift and go to state 39
+    EX              shift and go to state 40
+    ID              shift and go to state 34
+    INT             shift and go to state 42
+    STRING          shift and go to state 43
+    FLOAT           shift and go to state 44
+
+    expresion                      shift and go to state 35
+    exp                            shift and go to state 36
+    termino                        shift and go to state 37
+    factor                         shift and go to state 38
+    cte                            shift and go to state 41
+
+state 27
+
+    (34) escritura -> PRINT LEFTPAR . recesc RIGHTPAR SEMCOLON
+    (35) recesc -> . expresion COMMA recesc
+    (36) recesc -> . STRING COMMA recesc
+    (37) recesc -> . expresion
+    (38) recesc -> . STRING
+    (19) expresion -> . exp LESS exp
+    (20) expresion -> . exp GREATER exp
+    (21) expresion -> . exp DIFF exp
+    (22) expresion -> . exp
+    (25) exp -> . termino recexp
+    (26) exp -> . termino
+    (28) termino -> . factor recterm
+    (29) termino -> . factor
+    (31) factor -> . LEFTPAR expresion RIGHTPAR
+    (32) factor -> . EX cte
+    (33) factor -> . cte
+    (39) cte -> . ID
+    (40) cte -> . INT
+    (41) cte -> . STRING
+    (42) cte -> . FLOAT
+
+    STRING          shift and go to state 47
+    LEFTPAR         shift and go to state 39
+    EX              shift and go to state 40
+    ID              shift and go to state 34
+    INT             shift and go to state 42
+    FLOAT           shift and go to state 44
+
+    recesc                         shift and go to state 45
+    expresion                      shift and go to state 46
+    exp                            shift and go to state 36
+    termino                        shift and go to state 37
+    factor                         shift and go to state 38
+    cte                            shift and go to state 41
+
+state 28
+
+    (23) condicion -> IF LEFTPAR . expresion RIGHTPAR THEN bloque
+    (24) condicion -> IF LEFTPAR . expresion RIGHTPAR THEN bloque ELSE bloque
+    (19) expresion -> . exp LESS exp
+    (20) expresion -> . exp GREATER exp
+    (21) expresion -> . exp DIFF exp
+    (22) expresion -> . exp
+    (25) exp -> . termino recexp
+    (26) exp -> . termino
+    (28) termino -> . factor recterm
+    (29) termino -> . factor
+    (31) factor -> . LEFTPAR expresion RIGHTPAR
+    (32) factor -> . EX cte
+    (33) factor -> . cte
+    (39) cte -> . ID
+    (40) cte -> . INT
+    (41) cte -> . STRING
+    (42) cte -> . FLOAT
+
+    LEFTPAR         shift and go to state 39
+    EX              shift and go to state 40
+    ID              shift and go to state 34
+    INT             shift and go to state 42
+    STRING          shift and go to state 43
+    FLOAT           shift and go to state 44
+
+    expresion                      shift and go to state 48
+    exp                            shift and go to state 36
+    termino                        shift and go to state 37
+    factor                         shift and go to state 38
+    cte                            shift and go to state 41
+
+state 29
+
+    (4) recvars -> recids COLON tipo . SEMCOLON recvars
+    (5) recvars -> recids COLON tipo . SEMCOLON
+
+    SEMCOLON        shift and go to state 49
+
+
+state 30
+
+    (8) tipo -> TINT .
+
+    SEMCOLON        reduce using rule 8 (tipo -> TINT .)
+
+
+state 31
+
+    (9) tipo -> TFLOAT .
+
+    SEMCOLON        reduce using rule 9 (tipo -> TFLOAT .)
+
+
+state 32
+
+    (10) tipo -> TSTRING .
+
+    SEMCOLON        reduce using rule 10 (tipo -> TSTRING .)
+
+
+state 33
+
+    (7) recids -> ID COMMA recids .
+
+    COLON           reduce using rule 7 (recids -> ID COMMA recids .)
+
+
+state 34
+
+    (39) cte -> ID .
+
+    TERM            reduce using rule 39 (cte -> ID .)
+    EX              reduce using rule 39 (cte -> ID .)
+    LESS            reduce using rule 39 (cte -> ID .)
+    GREATER         reduce using rule 39 (cte -> ID .)
+    DIFF            reduce using rule 39 (cte -> ID .)
+    SEMCOLON        reduce using rule 39 (cte -> ID .)
+    COMMA           reduce using rule 39 (cte -> ID .)
+    RIGHTPAR        reduce using rule 39 (cte -> ID .)
+
+
+state 35
+
+    (18) asignacion -> ID EQUALS expresion . SEMCOLON
+
+    SEMCOLON        shift and go to state 50
+
+
+state 36
+
+    (19) expresion -> exp . LESS exp
+    (20) expresion -> exp . GREATER exp
+    (21) expresion -> exp . DIFF exp
+    (22) expresion -> exp .
+
+    LESS            shift and go to state 51
+    GREATER         shift and go to state 52
+    DIFF            shift and go to state 53
+    SEMCOLON        reduce using rule 22 (expresion -> exp .)
+    COMMA           reduce using rule 22 (expresion -> exp .)
+    RIGHTPAR        reduce using rule 22 (expresion -> exp .)
+
+
+state 37
+
+    (25) exp -> termino . recexp
+    (26) exp -> termino .
+    (27) recexp -> . EX exp
+
+    LESS            reduce using rule 26 (exp -> termino .)
+    GREATER         reduce using rule 26 (exp -> termino .)
+    DIFF            reduce using rule 26 (exp -> termino .)
+    SEMCOLON        reduce using rule 26 (exp -> termino .)
+    COMMA           reduce using rule 26 (exp -> termino .)
+    RIGHTPAR        reduce using rule 26 (exp -> termino .)
+    EX              shift and go to state 55
+
+    recexp                         shift and go to state 54
+
+state 38
+
+    (28) termino -> factor . recterm
+    (29) termino -> factor .
+    (30) recterm -> . TERM termino
+
+    EX              reduce using rule 29 (termino -> factor .)
+    LESS            reduce using rule 29 (termino -> factor .)
+    GREATER         reduce using rule 29 (termino -> factor .)
+    DIFF            reduce using rule 29 (termino -> factor .)
+    SEMCOLON        reduce using rule 29 (termino -> factor .)
+    COMMA           reduce using rule 29 (termino -> factor .)
+    RIGHTPAR        reduce using rule 29 (termino -> factor .)
+    TERM            shift and go to state 57
+
+    recterm                        shift and go to state 56
+
+state 39
+
+    (31) factor -> LEFTPAR . expresion RIGHTPAR
+    (19) expresion -> . exp LESS exp
+    (20) expresion -> . exp GREATER exp
+    (21) expresion -> . exp DIFF exp
+    (22) expresion -> . exp
+    (25) exp -> . termino recexp
+    (26) exp -> . termino
+    (28) termino -> . factor recterm
+    (29) termino -> . factor
+    (31) factor -> . LEFTPAR expresion RIGHTPAR
+    (32) factor -> . EX cte
+    (33) factor -> . cte
+    (39) cte -> . ID
+    (40) cte -> . INT
+    (41) cte -> . STRING
+    (42) cte -> . FLOAT
+
+    LEFTPAR         shift and go to state 39
+    EX              shift and go to state 40
+    ID              shift and go to state 34
+    INT             shift and go to state 42
+    STRING          shift and go to state 43
+    FLOAT           shift and go to state 44
+
+    expresion                      shift and go to state 58
+    exp                            shift and go to state 36
+    termino                        shift and go to state 37
+    factor                         shift and go to state 38
+    cte                            shift and go to state 41
+
+state 40
+
+    (32) factor -> EX . cte
+    (39) cte -> . ID
+    (40) cte -> . INT
+    (41) cte -> . STRING
+    (42) cte -> . FLOAT
+
+    ID              shift and go to state 34
+    INT             shift and go to state 42
+    STRING          shift and go to state 43
+    FLOAT           shift and go to state 44
+
+    cte                            shift and go to state 59
+
+state 41
+
+    (33) factor -> cte .
+
+    TERM            reduce using rule 33 (factor -> cte .)
+    EX              reduce using rule 33 (factor -> cte .)
+    LESS            reduce using rule 33 (factor -> cte .)
+    GREATER         reduce using rule 33 (factor -> cte .)
+    DIFF            reduce using rule 33 (factor -> cte .)
+    SEMCOLON        reduce using rule 33 (factor -> cte .)
+    COMMA           reduce using rule 33 (factor -> cte .)
+    RIGHTPAR        reduce using rule 33 (factor -> cte .)
+
+
+state 42
+
+    (40) cte -> INT .
+
+    TERM            reduce using rule 40 (cte -> INT .)
+    EX              reduce using rule 40 (cte -> INT .)
+    LESS            reduce using rule 40 (cte -> INT .)
+    GREATER         reduce using rule 40 (cte -> INT .)
+    DIFF            reduce using rule 40 (cte -> INT .)
+    SEMCOLON        reduce using rule 40 (cte -> INT .)
+    COMMA           reduce using rule 40 (cte -> INT .)
+    RIGHTPAR        reduce using rule 40 (cte -> INT .)
+
+
+state 43
+
+    (41) cte -> STRING .
+
+    TERM            reduce using rule 41 (cte -> STRING .)
+    EX              reduce using rule 41 (cte -> STRING .)
+    LESS            reduce using rule 41 (cte -> STRING .)
+    GREATER         reduce using rule 41 (cte -> STRING .)
+    DIFF            reduce using rule 41 (cte -> STRING .)
+    SEMCOLON        reduce using rule 41 (cte -> STRING .)
+    RIGHTPAR        reduce using rule 41 (cte -> STRING .)
+    COMMA           reduce using rule 41 (cte -> STRING .)
+
+
+state 44
+
+    (42) cte -> FLOAT .
+
+    TERM            reduce using rule 42 (cte -> FLOAT .)
+    EX              reduce using rule 42 (cte -> FLOAT .)
+    LESS            reduce using rule 42 (cte -> FLOAT .)
+    GREATER         reduce using rule 42 (cte -> FLOAT .)
+    DIFF            reduce using rule 42 (cte -> FLOAT .)
+    SEMCOLON        reduce using rule 42 (cte -> FLOAT .)
+    COMMA           reduce using rule 42 (cte -> FLOAT .)
+    RIGHTPAR        reduce using rule 42 (cte -> FLOAT .)
+
+
+state 45
+
+    (34) escritura -> PRINT LEFTPAR recesc . RIGHTPAR SEMCOLON
+
+    RIGHTPAR        shift and go to state 60
+
+
+state 46
+
+    (35) recesc -> expresion . COMMA recesc
+    (37) recesc -> expresion .
+
+    COMMA           shift and go to state 61
+    RIGHTPAR        reduce using rule 37 (recesc -> expresion .)
+
+
+state 47
+
+    (36) recesc -> STRING . COMMA recesc
+    (38) recesc -> STRING .
+    (41) cte -> STRING .
+
+  ! shift/reduce conflict for COMMA resolved as shift
+  ! reduce/reduce conflict for RIGHTPAR resolved using rule 38 (recesc -> STRING .)
+    COMMA           shift and go to state 62
+    RIGHTPAR        reduce using rule 38 (recesc -> STRING .)
+    TERM            reduce using rule 41 (cte -> STRING .)
+    EX              reduce using rule 41 (cte -> STRING .)
+    LESS            reduce using rule 41 (cte -> STRING .)
+    GREATER         reduce using rule 41 (cte -> STRING .)
+    DIFF            reduce using rule 41 (cte -> STRING .)
+
+  ! COMMA           [ reduce using rule 41 (cte -> STRING .) ]
+  ! RIGHTPAR        [ reduce using rule 41 (cte -> STRING .) ]
+
+
+state 48
+
+    (23) condicion -> IF LEFTPAR expresion . RIGHTPAR THEN bloque
+    (24) condicion -> IF LEFTPAR expresion . RIGHTPAR THEN bloque ELSE bloque
+
+    RIGHTPAR        shift and go to state 63
+
+
+state 49
+
+    (4) recvars -> recids COLON tipo SEMCOLON . recvars
+    (5) recvars -> recids COLON tipo SEMCOLON .
+    (4) recvars -> . recids COLON tipo SEMCOLON recvars
+    (5) recvars -> . recids COLON tipo SEMCOLON
+    (6) recids -> . ID
+    (7) recids -> . ID COMMA recids
+
+    LEFTKEY         reduce using rule 5 (recvars -> recids COLON tipo SEMCOLON .)
+    ID              shift and go to state 12
+
+    recids                         shift and go to state 11
+    recvars                        shift and go to state 64
+
+state 50
+
+    (18) asignacion -> ID EQUALS expresion SEMCOLON .
+
+    ID              reduce using rule 18 (asignacion -> ID EQUALS expresion SEMCOLON .)
+    PRINT           reduce using rule 18 (asignacion -> ID EQUALS expresion SEMCOLON .)
+    IF              reduce using rule 18 (asignacion -> ID EQUALS expresion SEMCOLON .)
+    RIGHTKEY        reduce using rule 18 (asignacion -> ID EQUALS expresion SEMCOLON .)
+
+
+state 51
+
+    (19) expresion -> exp LESS . exp
+    (25) exp -> . termino recexp
+    (26) exp -> . termino
+    (28) termino -> . factor recterm
+    (29) termino -> . factor
+    (31) factor -> . LEFTPAR expresion RIGHTPAR
+    (32) factor -> . EX cte
+    (33) factor -> . cte
+    (39) cte -> . ID
+    (40) cte -> . INT
+    (41) cte -> . STRING
+    (42) cte -> . FLOAT
+
+    LEFTPAR         shift and go to state 39
+    EX              shift and go to state 40
+    ID              shift and go to state 34
+    INT             shift and go to state 42
+    STRING          shift and go to state 43
+    FLOAT           shift and go to state 44
+
+    exp                            shift and go to state 65
+    termino                        shift and go to state 37
+    factor                         shift and go to state 38
+    cte                            shift and go to state 41
+
+state 52
+
+    (20) expresion -> exp GREATER . exp
+    (25) exp -> . termino recexp
+    (26) exp -> . termino
+    (28) termino -> . factor recterm
+    (29) termino -> . factor
+    (31) factor -> . LEFTPAR expresion RIGHTPAR
+    (32) factor -> . EX cte
+    (33) factor -> . cte
+    (39) cte -> . ID
+    (40) cte -> . INT
+    (41) cte -> . STRING
+    (42) cte -> . FLOAT
+
+    LEFTPAR         shift and go to state 39
+    EX              shift and go to state 40
+    ID              shift and go to state 34
+    INT             shift and go to state 42
+    STRING          shift and go to state 43
+    FLOAT           shift and go to state 44
+
+    exp                            shift and go to state 66
+    termino                        shift and go to state 37
+    factor                         shift and go to state 38
+    cte                            shift and go to state 41
+
+state 53
+
+    (21) expresion -> exp DIFF . exp
+    (25) exp -> . termino recexp
+    (26) exp -> . termino
+    (28) termino -> . factor recterm
+    (29) termino -> . factor
+    (31) factor -> . LEFTPAR expresion RIGHTPAR
+    (32) factor -> . EX cte
+    (33) factor -> . cte
+    (39) cte -> . ID
+    (40) cte -> . INT
+    (41) cte -> . STRING
+    (42) cte -> . FLOAT
+
+    LEFTPAR         shift and go to state 39
+    EX              shift and go to state 40
+    ID              shift and go to state 34
+    INT             shift and go to state 42
+    STRING          shift and go to state 43
+    FLOAT           shift and go to state 44
+
+    exp                            shift and go to state 67
+    termino                        shift and go to state 37
+    factor                         shift and go to state 38
+    cte                            shift and go to state 41
+
+state 54
+
+    (25) exp -> termino recexp .
+
+    LESS            reduce using rule 25 (exp -> termino recexp .)
+    GREATER         reduce using rule 25 (exp -> termino recexp .)
+    DIFF            reduce using rule 25 (exp -> termino recexp .)
+    SEMCOLON        reduce using rule 25 (exp -> termino recexp .)
+    COMMA           reduce using rule 25 (exp -> termino recexp .)
+    RIGHTPAR        reduce using rule 25 (exp -> termino recexp .)
+
+
+state 55
+
+    (27) recexp -> EX . exp
+    (25) exp -> . termino recexp
+    (26) exp -> . termino
+    (28) termino -> . factor recterm
+    (29) termino -> . factor
+    (31) factor -> . LEFTPAR expresion RIGHTPAR
+    (32) factor -> . EX cte
+    (33) factor -> . cte
+    (39) cte -> . ID
+    (40) cte -> . INT
+    (41) cte -> . STRING
+    (42) cte -> . FLOAT
+
+    LEFTPAR         shift and go to state 39
+    EX              shift and go to state 40
+    ID              shift and go to state 34
+    INT             shift and go to state 42
+    STRING          shift and go to state 43
+    FLOAT           shift and go to state 44
+
+    exp                            shift and go to state 68
+    termino                        shift and go to state 37
+    factor                         shift and go to state 38
+    cte                            shift and go to state 41
+
+state 56
+
+    (28) termino -> factor recterm .
+
+    EX              reduce using rule 28 (termino -> factor recterm .)
+    LESS            reduce using rule 28 (termino -> factor recterm .)
+    GREATER         reduce using rule 28 (termino -> factor recterm .)
+    DIFF            reduce using rule 28 (termino -> factor recterm .)
+    SEMCOLON        reduce using rule 28 (termino -> factor recterm .)
+    COMMA           reduce using rule 28 (termino -> factor recterm .)
+    RIGHTPAR        reduce using rule 28 (termino -> factor recterm .)
+
+
+state 57
+
+    (30) recterm -> TERM . termino
+    (28) termino -> . factor recterm
+    (29) termino -> . factor
+    (31) factor -> . LEFTPAR expresion RIGHTPAR
+    (32) factor -> . EX cte
+    (33) factor -> . cte
+    (39) cte -> . ID
+    (40) cte -> . INT
+    (41) cte -> . STRING
+    (42) cte -> . FLOAT
+
+    LEFTPAR         shift and go to state 39
+    EX              shift and go to state 40
+    ID              shift and go to state 34
+    INT             shift and go to state 42
+    STRING          shift and go to state 43
+    FLOAT           shift and go to state 44
+
+    termino                        shift and go to state 69
+    factor                         shift and go to state 38
+    cte                            shift and go to state 41
+
+state 58
+
+    (31) factor -> LEFTPAR expresion . RIGHTPAR
+
+    RIGHTPAR        shift and go to state 70
+
+
+state 59
+
+    (32) factor -> EX cte .
+
+    TERM            reduce using rule 32 (factor -> EX cte .)
+    EX              reduce using rule 32 (factor -> EX cte .)
+    LESS            reduce using rule 32 (factor -> EX cte .)
+    GREATER         reduce using rule 32 (factor -> EX cte .)
+    DIFF            reduce using rule 32 (factor -> EX cte .)
+    SEMCOLON        reduce using rule 32 (factor -> EX cte .)
+    COMMA           reduce using rule 32 (factor -> EX cte .)
+    RIGHTPAR        reduce using rule 32 (factor -> EX cte .)
+
+
+state 60
+
+    (34) escritura -> PRINT LEFTPAR recesc RIGHTPAR . SEMCOLON
+
+    SEMCOLON        shift and go to state 71
+
+
+state 61
+
+    (35) recesc -> expresion COMMA . recesc
+    (35) recesc -> . expresion COMMA recesc
+    (36) recesc -> . STRING COMMA recesc
+    (37) recesc -> . expresion
+    (38) recesc -> . STRING
+    (19) expresion -> . exp LESS exp
+    (20) expresion -> . exp GREATER exp
+    (21) expresion -> . exp DIFF exp
+    (22) expresion -> . exp
+    (25) exp -> . termino recexp
+    (26) exp -> . termino
+    (28) termino -> . factor recterm
+    (29) termino -> . factor
+    (31) factor -> . LEFTPAR expresion RIGHTPAR
+    (32) factor -> . EX cte
+    (33) factor -> . cte
+    (39) cte -> . ID
+    (40) cte -> . INT
+    (41) cte -> . STRING
+    (42) cte -> . FLOAT
+
+    STRING          shift and go to state 47
+    LEFTPAR         shift and go to state 39
+    EX              shift and go to state 40
+    ID              shift and go to state 34
+    INT             shift and go to state 42
+    FLOAT           shift and go to state 44
+
+    expresion                      shift and go to state 46
+    recesc                         shift and go to state 72
+    exp                            shift and go to state 36
+    termino                        shift and go to state 37
+    factor                         shift and go to state 38
+    cte                            shift and go to state 41
+
+state 62
+
+    (36) recesc -> STRING COMMA . recesc
+    (35) recesc -> . expresion COMMA recesc
+    (36) recesc -> . STRING COMMA recesc
+    (37) recesc -> . expresion
+    (38) recesc -> . STRING
+    (19) expresion -> . exp LESS exp
+    (20) expresion -> . exp GREATER exp
+    (21) expresion -> . exp DIFF exp
+    (22) expresion -> . exp
+    (25) exp -> . termino recexp
+    (26) exp -> . termino
+    (28) termino -> . factor recterm
+    (29) termino -> . factor
+    (31) factor -> . LEFTPAR expresion RIGHTPAR
+    (32) factor -> . EX cte
+    (33) factor -> . cte
+    (39) cte -> . ID
+    (40) cte -> . INT
+    (41) cte -> . STRING
+    (42) cte -> . FLOAT
+
+    STRING          shift and go to state 47
+    LEFTPAR         shift and go to state 39
+    EX              shift and go to state 40
+    ID              shift and go to state 34
+    INT             shift and go to state 42
+    FLOAT           shift and go to state 44
+
+    recesc                         shift and go to state 73
+    expresion                      shift and go to state 46
+    exp                            shift and go to state 36
+    termino                        shift and go to state 37
+    factor                         shift and go to state 38
+    cte                            shift and go to state 41
+
+state 63
+
+    (23) condicion -> IF LEFTPAR expresion RIGHTPAR . THEN bloque
+    (24) condicion -> IF LEFTPAR expresion RIGHTPAR . THEN bloque ELSE bloque
+
+    THEN            shift and go to state 74
+
+
+state 64
+
+    (4) recvars -> recids COLON tipo SEMCOLON recvars .
+
+    LEFTKEY         reduce using rule 4 (recvars -> recids COLON tipo SEMCOLON recvars .)
+
+
+state 65
+
+    (19) expresion -> exp LESS exp .
+
+    SEMCOLON        reduce using rule 19 (expresion -> exp LESS exp .)
+    COMMA           reduce using rule 19 (expresion -> exp LESS exp .)
+    RIGHTPAR        reduce using rule 19 (expresion -> exp LESS exp .)
+
+
+state 66
+
+    (20) expresion -> exp GREATER exp .
+
+    SEMCOLON        reduce using rule 20 (expresion -> exp GREATER exp .)
+    COMMA           reduce using rule 20 (expresion -> exp GREATER exp .)
+    RIGHTPAR        reduce using rule 20 (expresion -> exp GREATER exp .)
+
+
+state 67
+
+    (21) expresion -> exp DIFF exp .
+
+    SEMCOLON        reduce using rule 21 (expresion -> exp DIFF exp .)
+    COMMA           reduce using rule 21 (expresion -> exp DIFF exp .)
+    RIGHTPAR        reduce using rule 21 (expresion -> exp DIFF exp .)
+
+
+state 68
+
+    (27) recexp -> EX exp .
+
+    LESS            reduce using rule 27 (recexp -> EX exp .)
+    GREATER         reduce using rule 27 (recexp -> EX exp .)
+    DIFF            reduce using rule 27 (recexp -> EX exp .)
+    SEMCOLON        reduce using rule 27 (recexp -> EX exp .)
+    COMMA           reduce using rule 27 (recexp -> EX exp .)
+    RIGHTPAR        reduce using rule 27 (recexp -> EX exp .)
+
+
+state 69
+
+    (30) recterm -> TERM termino .
+
+    EX              reduce using rule 30 (recterm -> TERM termino .)
+    LESS            reduce using rule 30 (recterm -> TERM termino .)
+    GREATER         reduce using rule 30 (recterm -> TERM termino .)
+    DIFF            reduce using rule 30 (recterm -> TERM termino .)
+    SEMCOLON        reduce using rule 30 (recterm -> TERM termino .)
+    COMMA           reduce using rule 30 (recterm -> TERM termino .)
+    RIGHTPAR        reduce using rule 30 (recterm -> TERM termino .)
+
+
+state 70
+
+    (31) factor -> LEFTPAR expresion RIGHTPAR .
+
+    TERM            reduce using rule 31 (factor -> LEFTPAR expresion RIGHTPAR .)
+    EX              reduce using rule 31 (factor -> LEFTPAR expresion RIGHTPAR .)
+    LESS            reduce using rule 31 (factor -> LEFTPAR expresion RIGHTPAR .)
+    GREATER         reduce using rule 31 (factor -> LEFTPAR expresion RIGHTPAR .)
+    DIFF            reduce using rule 31 (factor -> LEFTPAR expresion RIGHTPAR .)
+    SEMCOLON        reduce using rule 31 (factor -> LEFTPAR expresion RIGHTPAR .)
+    COMMA           reduce using rule 31 (factor -> LEFTPAR expresion RIGHTPAR .)
+    RIGHTPAR        reduce using rule 31 (factor -> LEFTPAR expresion RIGHTPAR .)
+
+
+state 71
+
+    (34) escritura -> PRINT LEFTPAR recesc RIGHTPAR SEMCOLON .
+
+    ID              reduce using rule 34 (escritura -> PRINT LEFTPAR recesc RIGHTPAR SEMCOLON .)
+    PRINT           reduce using rule 34 (escritura -> PRINT LEFTPAR recesc RIGHTPAR SEMCOLON .)
+    IF              reduce using rule 34 (escritura -> PRINT LEFTPAR recesc RIGHTPAR SEMCOLON .)
+    RIGHTKEY        reduce using rule 34 (escritura -> PRINT LEFTPAR recesc RIGHTPAR SEMCOLON .)
+
+
+state 72
+
+    (35) recesc -> expresion COMMA recesc .
+
+    RIGHTPAR        reduce using rule 35 (recesc -> expresion COMMA recesc .)
+
+
+state 73
+
+    (36) recesc -> STRING COMMA recesc .
+
+    RIGHTPAR        reduce using rule 36 (recesc -> STRING COMMA recesc .)
+
+
+state 74
+
+    (23) condicion -> IF LEFTPAR expresion RIGHTPAR THEN . bloque
+    (24) condicion -> IF LEFTPAR expresion RIGHTPAR THEN . bloque ELSE bloque
+    (11) bloque -> . LEFTKEY estatutos RIGHTKEY
+    (12) bloque -> . LEFTKEY RIGHTKEY
+
+    LEFTKEY         shift and go to state 8
+
+    bloque                         shift and go to state 75
+
+state 75
+
+    (23) condicion -> IF LEFTPAR expresion RIGHTPAR THEN bloque .
+    (24) condicion -> IF LEFTPAR expresion RIGHTPAR THEN bloque . ELSE bloque
+
+    ID              reduce using rule 23 (condicion -> IF LEFTPAR expresion RIGHTPAR THEN bloque .)
+    PRINT           reduce using rule 23 (condicion -> IF LEFTPAR expresion RIGHTPAR THEN bloque .)
+    IF              reduce using rule 23 (condicion -> IF LEFTPAR expresion RIGHTPAR THEN bloque .)
+    RIGHTKEY        reduce using rule 23 (condicion -> IF LEFTPAR expresion RIGHTPAR THEN bloque .)
+    ELSE            shift and go to state 76
+
+
+state 76
+
+    (24) condicion -> IF LEFTPAR expresion RIGHTPAR THEN bloque ELSE . bloque
+    (11) bloque -> . LEFTKEY estatutos RIGHTKEY
+    (12) bloque -> . LEFTKEY RIGHTKEY
+
+    LEFTKEY         shift and go to state 8
+
+    bloque                         shift and go to state 77
+
+state 77
+
+    (24) condicion -> IF LEFTPAR expresion RIGHTPAR THEN bloque ELSE bloque .
+
+    ID              reduce using rule 24 (condicion -> IF LEFTPAR expresion RIGHTPAR THEN bloque ELSE bloque .)
+    PRINT           reduce using rule 24 (condicion -> IF LEFTPAR expresion RIGHTPAR THEN bloque ELSE bloque .)
+    IF              reduce using rule 24 (condicion -> IF LEFTPAR expresion RIGHTPAR THEN bloque ELSE bloque .)
+    RIGHTKEY        reduce using rule 24 (condicion -> IF LEFTPAR expresion RIGHTPAR THEN bloque ELSE bloque .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for COMMA in state 47 resolved as shift
+WARNING: reduce/reduce conflict in state 47 resolved using rule (recesc -> STRING)
+WARNING: rejected rule (cte -> STRING) in state 47
