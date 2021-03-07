@@ -1,0 +1,97 @@
+_digit : '0'-'9' ;
+_alpha : 'a'-'z' | 'A'-'Z';
+_id : _alpha {(_digit | _alpha)};
+_int : _digit {_digit};
+_float : _digit {_digit} '.' _digit {_digit};
+_string : '"' {(_digit | _alpha)} '"';
+
+!ws : ' ' | '\t' | '\n' | '\r';
+
+tint : 'i' 'n' 't';
+tfloat : 'f' 'l' 'o' 'a' 't';
+tstring : 's' 't' 'r' 'i' 'n' 'g';
+if : 'i' 'f';
+then : 't' 'h' 'e' 'n';
+else : 'e' 'l' 's' 'e';
+var : 'v' 'a' 'r';
+print : 'p' 'r' 'i' 'n' 't';
+program : 'p' 'r' 'o' 'g' 'r' 'a' 'm';
+ex : '+' | '-';
+term : '*' | '/';
+less : '<';
+greater : '>';
+diff : '<' '>';
+leftpar : '(';
+rightpar : ')';
+leftkey : '{';
+rightkey : '}';
+equals : '=';
+semcolon : ';';
+colon : ':';
+comma : ',';
+
+
+int : _int;
+float : _float;
+string : _string;
+id : _id;
+
+Programa : program id semcolon Vars Bloque
+         | program id semcolon Bloque;
+
+Vars : var Recvars;
+
+Recvars : Recids colon Tipo semcolon Recvars
+        | Recids colon Tipo semcolon;
+
+Recids : id 
+       | id comma Recids;
+
+Tipo : tint
+     | tfloat 
+     | tstring;
+
+Bloque : leftkey Estatutos rightkey
+       | leftkey rightkey;
+
+Estatutos : Estatuto Estatutos
+          | Estatuto; 
+
+Estatuto : Asignacion 
+         | Escritura
+         | Condicion;
+
+Asignacion : id equals Expresion semcolon;
+
+Expresion : Exp less Exp
+                  | Exp greater Exp
+                  | Exp diff Exp
+                  | Exp;
+
+Condicion : if leftpar Expresion rightpar then Bloque semcolon
+            | if leftpar Expresion rightpar then Bloque else Bloque semcolon;
+
+Exp : Termino Recexp
+            | Termino;
+
+Recexp : ex Exp;
+
+Termino : Factor Recterm 
+                | Factor;
+
+Recterm : term Termino;  
+
+Factor : leftpar Expresion rightpar 
+               | ex Cte
+               | Cte;
+
+Escritura : print leftpar Recesc rightpar semcolon;
+
+Recesc : Expresion comma Recesc 
+               | string comma Recesc 
+               | Expresion 
+               | string;
+Cte : id 
+    | int
+    | string
+    | float;

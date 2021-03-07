@@ -1,0 +1,8 @@
+1 LR-1 conflicts: 
+	S65
+		symbol: comma
+			Shift(101)
+			Reduce(41:Cte : string	<<  >>)
+		symbol: rightpar
+			Reduce(38:Recesc : string	<<  >>)
+			Reduce(41:Cte : string	<<  >>)

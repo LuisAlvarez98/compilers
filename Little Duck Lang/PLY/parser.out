@@ -25,8 +25,8 @@ Rule 19    expresion -> exp LESS exp
 Rule 20    expresion -> exp GREATER exp
 Rule 21    expresion -> exp DIFF exp
 Rule 22    expresion -> exp
-Rule 23    condicion -> IF LEFTPAR expresion RIGHTPAR THEN bloque
-Rule 24    condicion -> IF LEFTPAR expresion RIGHTPAR THEN bloque ELSE bloque
+Rule 23    condicion -> IF LEFTPAR expresion RIGHTPAR THEN bloque SEMCOLON
+Rule 24    condicion -> IF LEFTPAR expresion RIGHTPAR THEN bloque ELSE bloque SEMCOLON
 Rule 25    exp -> termino recexp
 Rule 26    exp -> termino
 Rule 27    recexp -> EX exp
@@ -66,7 +66,7 @@ PRINT                : 34
 PROGRAM              : 1 2
 RIGHTKEY             : 11 12
 RIGHTPAR             : 23 24 31 34
-SEMCOLON             : 1 2 4 5 18 34
+SEMCOLON             : 1 2 4 5 18 23 24 34
 STRING               : 36 38 41
 TERM                 : 30
 TFLOAT               : 9
@@ -187,8 +187,8 @@ state 8
     (17) estatuto -> . condicion
     (18) asignacion -> . ID EQUALS expresion SEMCOLON
     (34) escritura -> . PRINT LEFTPAR recesc RIGHTPAR SEMCOLON
-    (23) condicion -> . IF LEFTPAR expresion RIGHTPAR THEN bloque
-    (24) condicion -> . IF LEFTPAR expresion RIGHTPAR THEN bloque ELSE bloque
+    (23) condicion -> . IF LEFTPAR expresion RIGHTPAR THEN bloque SEMCOLON
+    (24) condicion -> . IF LEFTPAR expresion RIGHTPAR THEN bloque ELSE bloque SEMCOLON
 
     RIGHTKEY        shift and go to state 14
     ID              shift and go to state 19
@@ -244,11 +244,8 @@ state 14
     (12) bloque -> LEFTKEY RIGHTKEY .
 
     $end            reduce using rule 12 (bloque -> LEFTKEY RIGHTKEY .)
+    SEMCOLON        reduce using rule 12 (bloque -> LEFTKEY RIGHTKEY .)
     ELSE            reduce using rule 12 (bloque -> LEFTKEY RIGHTKEY .)
-    ID              reduce using rule 12 (bloque -> LEFTKEY RIGHTKEY .)
-    PRINT           reduce using rule 12 (bloque -> LEFTKEY RIGHTKEY .)
-    IF              reduce using rule 12 (bloque -> LEFTKEY RIGHTKEY .)
-    RIGHTKEY        reduce using rule 12 (bloque -> LEFTKEY RIGHTKEY .)
 
 
 state 15
@@ -262,8 +259,8 @@ state 15
     (17) estatuto -> . condicion
     (18) asignacion -> . ID EQUALS expresion SEMCOLON
     (34) escritura -> . PRINT LEFTPAR recesc RIGHTPAR SEMCOLON
-    (23) condicion -> . IF LEFTPAR expresion RIGHTPAR THEN bloque
-    (24) condicion -> . IF LEFTPAR expresion RIGHTPAR THEN bloque ELSE bloque
+    (23) condicion -> . IF LEFTPAR expresion RIGHTPAR THEN bloque SEMCOLON
+    (24) condicion -> . IF LEFTPAR expresion RIGHTPAR THEN bloque ELSE bloque SEMCOLON
 
     RIGHTKEY        reduce using rule 14 (estatutos -> estatuto .)
     ID              shift and go to state 19
@@ -322,8 +319,8 @@ state 20
 
 state 21
 
-    (23) condicion -> IF . LEFTPAR expresion RIGHTPAR THEN bloque
-    (24) condicion -> IF . LEFTPAR expresion RIGHTPAR THEN bloque ELSE bloque
+    (23) condicion -> IF . LEFTPAR expresion RIGHTPAR THEN bloque SEMCOLON
+    (24) condicion -> IF . LEFTPAR expresion RIGHTPAR THEN bloque ELSE bloque SEMCOLON
 
     LEFTPAR         shift and go to state 28
 
@@ -357,11 +354,8 @@ state 24
     (11) bloque -> LEFTKEY estatutos RIGHTKEY .
 
     $end            reduce using rule 11 (bloque -> LEFTKEY estatutos RIGHTKEY .)
+    SEMCOLON        reduce using rule 11 (bloque -> LEFTKEY estatutos RIGHTKEY .)
     ELSE            reduce using rule 11 (bloque -> LEFTKEY estatutos RIGHTKEY .)
-    ID              reduce using rule 11 (bloque -> LEFTKEY estatutos RIGHTKEY .)
-    PRINT           reduce using rule 11 (bloque -> LEFTKEY estatutos RIGHTKEY .)
-    IF              reduce using rule 11 (bloque -> LEFTKEY estatutos RIGHTKEY .)
-    RIGHTKEY        reduce using rule 11 (bloque -> LEFTKEY estatutos RIGHTKEY .)
 
 
 state 25
@@ -442,8 +436,8 @@ state 27
 
 state 28
 
-    (23) condicion -> IF LEFTPAR . expresion RIGHTPAR THEN bloque
-    (24) condicion -> IF LEFTPAR . expresion RIGHTPAR THEN bloque ELSE bloque
+    (23) condicion -> IF LEFTPAR . expresion RIGHTPAR THEN bloque SEMCOLON
+    (24) condicion -> IF LEFTPAR . expresion RIGHTPAR THEN bloque ELSE bloque SEMCOLON
     (19) expresion -> . exp LESS exp
     (20) expresion -> . exp GREATER exp
     (21) expresion -> . exp DIFF exp
@@ -719,8 +713,8 @@ state 47
 
 state 48
 
-    (23) condicion -> IF LEFTPAR expresion . RIGHTPAR THEN bloque
-    (24) condicion -> IF LEFTPAR expresion . RIGHTPAR THEN bloque ELSE bloque
+    (23) condicion -> IF LEFTPAR expresion . RIGHTPAR THEN bloque SEMCOLON
+    (24) condicion -> IF LEFTPAR expresion . RIGHTPAR THEN bloque ELSE bloque SEMCOLON
 
     RIGHTPAR        shift and go to state 63
 
@@ -1011,8 +1005,8 @@ state 62
 
 state 63
 
-    (23) condicion -> IF LEFTPAR expresion RIGHTPAR . THEN bloque
-    (24) condicion -> IF LEFTPAR expresion RIGHTPAR . THEN bloque ELSE bloque
+    (23) condicion -> IF LEFTPAR expresion RIGHTPAR . THEN bloque SEMCOLON
+    (24) condicion -> IF LEFTPAR expresion RIGHTPAR . THEN bloque ELSE bloque SEMCOLON
 
     THEN            shift and go to state 74
 
@@ -1116,8 +1110,8 @@ state 73
 
 state 74
 
-    (23) condicion -> IF LEFTPAR expresion RIGHTPAR THEN . bloque
-    (24) condicion -> IF LEFTPAR expresion RIGHTPAR THEN . bloque ELSE bloque
+    (23) condicion -> IF LEFTPAR expresion RIGHTPAR THEN . bloque SEMCOLON
+    (24) condicion -> IF LEFTPAR expresion RIGHTPAR THEN . bloque ELSE bloque SEMCOLON
     (11) bloque -> . LEFTKEY estatutos RIGHTKEY
     (12) bloque -> . LEFTKEY RIGHTKEY
 
@@ -1127,34 +1121,48 @@ state 74
 
 state 75
 
-    (23) condicion -> IF LEFTPAR expresion RIGHTPAR THEN bloque .
-    (24) condicion -> IF LEFTPAR expresion RIGHTPAR THEN bloque . ELSE bloque
+    (23) condicion -> IF LEFTPAR expresion RIGHTPAR THEN bloque . SEMCOLON
+    (24) condicion -> IF LEFTPAR expresion RIGHTPAR THEN bloque . ELSE bloque SEMCOLON
 
-    ID              reduce using rule 23 (condicion -> IF LEFTPAR expresion RIGHTPAR THEN bloque .)
-    PRINT           reduce using rule 23 (condicion -> IF LEFTPAR expresion RIGHTPAR THEN bloque .)
-    IF              reduce using rule 23 (condicion -> IF LEFTPAR expresion RIGHTPAR THEN bloque .)
-    RIGHTKEY        reduce using rule 23 (condicion -> IF LEFTPAR expresion RIGHTPAR THEN bloque .)
-    ELSE            shift and go to state 76
+    SEMCOLON        shift and go to state 76
+    ELSE            shift and go to state 77
 
 
 state 76
 
-    (24) condicion -> IF LEFTPAR expresion RIGHTPAR THEN bloque ELSE . bloque
+    (23) condicion -> IF LEFTPAR expresion RIGHTPAR THEN bloque SEMCOLON .
+
+    ID              reduce using rule 23 (condicion -> IF LEFTPAR expresion RIGHTPAR THEN bloque SEMCOLON .)
+    PRINT           reduce using rule 23 (condicion -> IF LEFTPAR expresion RIGHTPAR THEN bloque SEMCOLON .)
+    IF              reduce using rule 23 (condicion -> IF LEFTPAR expresion RIGHTPAR THEN bloque SEMCOLON .)
+    RIGHTKEY        reduce using rule 23 (condicion -> IF LEFTPAR expresion RIGHTPAR THEN bloque SEMCOLON .)
+
+
+state 77
+
+    (24) condicion -> IF LEFTPAR expresion RIGHTPAR THEN bloque ELSE . bloque SEMCOLON
     (11) bloque -> . LEFTKEY estatutos RIGHTKEY
     (12) bloque -> . LEFTKEY RIGHTKEY
 
     LEFTKEY         shift and go to state 8
 
-    bloque                         shift and go to state 77
+    bloque                         shift and go to state 78
 
-state 77
+state 78
 
-    (24) condicion -> IF LEFTPAR expresion RIGHTPAR THEN bloque ELSE bloque .
+    (24) condicion -> IF LEFTPAR expresion RIGHTPAR THEN bloque ELSE bloque . SEMCOLON
 
-    ID              reduce using rule 24 (condicion -> IF LEFTPAR expresion RIGHTPAR THEN bloque ELSE bloque .)
-    PRINT           reduce using rule 24 (condicion -> IF LEFTPAR expresion RIGHTPAR THEN bloque ELSE bloque .)
-    IF              reduce using rule 24 (condicion -> IF LEFTPAR expresion RIGHTPAR THEN bloque ELSE bloque .)
-    RIGHTKEY        reduce using rule 24 (condicion -> IF LEFTPAR expresion RIGHTPAR THEN bloque ELSE bloque .)
+    SEMCOLON        shift and go to state 79
+
+
+state 79
+
+    (24) condicion -> IF LEFTPAR expresion RIGHTPAR THEN bloque ELSE bloque SEMCOLON .
+
+    ID              reduce using rule 24 (condicion -> IF LEFTPAR expresion RIGHTPAR THEN bloque ELSE bloque SEMCOLON .)
+    PRINT           reduce using rule 24 (condicion -> IF LEFTPAR expresion RIGHTPAR THEN bloque ELSE bloque SEMCOLON .)
+    IF              reduce using rule 24 (condicion -> IF LEFTPAR expresion RIGHTPAR THEN bloque ELSE bloque SEMCOLON .)
+    RIGHTKEY        reduce using rule 24 (condicion -> IF LEFTPAR expresion RIGHTPAR THEN bloque ELSE bloque SEMCOLON .)
 
 WARNING: 
 WARNING: Conflicts:

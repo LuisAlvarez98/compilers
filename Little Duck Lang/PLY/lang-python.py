@@ -121,8 +121,8 @@ def p_expresion(p): #.
                   | exp '''
 
 def p_condicion(p): #.
-    ''' condicion : IF LEFTPAR expresion RIGHTPAR THEN bloque
-                  | IF LEFTPAR expresion RIGHTPAR THEN bloque ELSE bloque
+    ''' condicion : IF LEFTPAR expresion RIGHTPAR THEN bloque SEMCOLON
+                  | IF LEFTPAR expresion RIGHTPAR THEN bloque ELSE bloque SEMCOLON
      '''
 
 def p_exp(p):#.

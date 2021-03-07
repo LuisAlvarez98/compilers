@@ -1,0 +1,94 @@
+S': {
+	program
+}
+Programa: {
+	program
+}
+Vars: {
+	var
+}
+Recvars: {
+	id
+}
+Recids: {
+	id
+}
+Tipo: {
+	tfloat
+	tint
+	tstring
+}
+Bloque: {
+	leftkey
+}
+Estatutos: {
+	id
+	if
+	print
+}
+Estatuto: {
+	id
+	if
+	print
+}
+Asignacion: {
+	id
+}
+Expresion: {
+	ex
+	float
+	id
+	int
+	leftpar
+	string
+}
+Condicion: {
+	if
+}
+Exp: {
+	ex
+	float
+	id
+	int
+	leftpar
+	string
+}
+Recexp: {
+	ex
+}
+Termino: {
+	ex
+	float
+	id
+	int
+	leftpar
+	string
+}
+Recterm: {
+	term
+}
+Factor: {
+	ex
+	float
+	id
+	int
+	leftpar
+	string
+}
+Escritura: {
+	print
+}
+Recesc: {
+	ex
+	float
+	id
+	int
+	leftpar
+	string
+}
+Cte: {
+	float
+	id
+	int
+	string
+}

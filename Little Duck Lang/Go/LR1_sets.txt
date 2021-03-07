@@ -1,0 +1,4017 @@
+S0{
+	S' : •Programa «$»
+	Programa : •program id semcolon Vars Bloque «$»
+	Programa : •program id semcolon Bloque «$»
+}
+Transitions:
+	Programa -> 1
+	program -> 2
+
+
+S1{
+	S' : Programa• «$»
+}
+Transitions:
+
+
+S2{
+	Programa : program •id semcolon Vars Bloque «$»
+	Programa : program •id semcolon Bloque «$»
+}
+Transitions:
+	id -> 3
+
+
+S3{
+	Programa : program id •semcolon Vars Bloque «$»
+	Programa : program id •semcolon Bloque «$»
+}
+Transitions:
+	semcolon -> 4
+
+
+S4{
+	Programa : program id semcolon •Vars Bloque «$»
+	Programa : program id semcolon •Bloque «$»
+	Vars : •var Recvars «leftkey»
+	Bloque : •leftkey Estatutos rightkey «$»
+	Bloque : •leftkey rightkey «$»
+}
+Transitions:
+	Vars -> 5
+	Bloque -> 6
+	var -> 7
+	leftkey -> 8
+
+
+S5{
+	Programa : program id semcolon Vars •Bloque «$»
+	Bloque : •leftkey Estatutos rightkey «$»
+	Bloque : •leftkey rightkey «$»
+}
+Transitions:
+	leftkey -> 8
+	Bloque -> 9
+
+
+S6{
+	Programa : program id semcolon Bloque• «$»
+}
+Transitions:
+
+
+S7{
+	Vars : var •Recvars «leftkey»
+	Recvars : •Recids colon Tipo semcolon Recvars «leftkey»
+	Recvars : •Recids colon Tipo semcolon «leftkey»
+	Recids : •id «colon»
+	Recids : •id comma Recids «colon»
+}
+Transitions:
+	id -> 10
+	Recvars -> 11
+	Recids -> 12
+
+
+S8{
+	Bloque : leftkey •Estatutos rightkey «$»
+	Bloque : leftkey •rightkey «$»
+	Estatutos : •Estatuto Estatutos «rightkey»
+	Estatutos : •Estatuto «rightkey»
+	Estatuto : •Asignacion «id»
+	Estatuto : •Asignacion «if»
+	Estatuto : •Asignacion «print»
+	Estatuto : •Escritura «id»
+	Estatuto : •Escritura «if»
+	Estatuto : •Escritura «print»
+	Estatuto : •Condicion «id»
+	Estatuto : •Condicion «if»
+	Estatuto : •Condicion «print»
+	Estatuto : •Asignacion «rightkey»
+	Estatuto : •Escritura «rightkey»
+	Estatuto : •Condicion «rightkey»
+	Asignacion : •id equals Expresion semcolon «id»
+	Asignacion : •id equals Expresion semcolon «if»
+	Asignacion : •id equals Expresion semcolon «print»
+	Escritura : •print leftpar Recesc rightpar semcolon «id»
+	Escritura : •print leftpar Recesc rightpar semcolon «if»
+	Escritura : •print leftpar Recesc rightpar semcolon «print»
+	Condicion : •if leftpar Expresion rightpar then Bloque semcolon «id»
+	Condicion : •if leftpar Expresion rightpar then Bloque else Bloque semcolon «id»
+	Condicion : •if leftpar Expresion rightpar then Bloque semcolon «if»
+	Condicion : •if leftpar Expresion rightpar then Bloque else Bloque semcolon «if»
+	Condicion : •if leftpar Expresion rightpar then Bloque semcolon «print»
+	Condicion : •if leftpar Expresion rightpar then Bloque else Bloque semcolon «print»
+	Asignacion : •id equals Expresion semcolon «rightkey»
+	Escritura : •print leftpar Recesc rightpar semcolon «rightkey»
+	Condicion : •if leftpar Expresion rightpar then Bloque semcolon «rightkey»
+	Condicion : •if leftpar Expresion rightpar then Bloque else Bloque semcolon «rightkey»
+}
+Transitions:
+	id -> 13
+	Estatutos -> 14
+	rightkey -> 15
+	Estatuto -> 16
+	Asignacion -> 17
+	Escritura -> 18
+	Condicion -> 19
+	if -> 20
+	print -> 21
+
+
+S9{
+	Programa : program id semcolon Vars Bloque• «$»
+}
+Transitions:
+
+
+S10{
+	Recids : id• «colon»
+	Recids : id •comma Recids «colon»
+}
+Transitions:
+	comma -> 22
+
+
+S11{
+	Vars : var Recvars• «leftkey»
+}
+Transitions:
+
+
+S12{
+	Recvars : Recids •colon Tipo semcolon Recvars «leftkey»
+	Recvars : Recids •colon Tipo semcolon «leftkey»
+}
+Transitions:
+	colon -> 23
+
+
+S13{
+	Asignacion : id •equals Expresion semcolon «id»
+	Asignacion : id •equals Expresion semcolon «if»
+	Asignacion : id •equals Expresion semcolon «print»
+	Asignacion : id •equals Expresion semcolon «rightkey»
+}
+Transitions:
+	equals -> 24
+
+
+S14{
+	Bloque : leftkey Estatutos •rightkey «$»
+}
+Transitions:
+	rightkey -> 25
+
+
+S15{
+	Bloque : leftkey rightkey• «$»
+}
+Transitions:
+
+
+S16{
+	Estatutos : Estatuto •Estatutos «rightkey»
+	Estatutos : Estatuto• «rightkey»
+	Estatutos : •Estatuto Estatutos «rightkey»
+	Estatutos : •Estatuto «rightkey»
+	Estatuto : •Asignacion «id»
+	Estatuto : •Asignacion «if»
+	Estatuto : •Asignacion «print»
+	Estatuto : •Escritura «id»
+	Estatuto : •Escritura «if»
+	Estatuto : •Escritura «print»
+	Estatuto : •Condicion «id»
+	Estatuto : •Condicion «if»
+	Estatuto : •Condicion «print»
+	Estatuto : •Asignacion «rightkey»
+	Estatuto : •Escritura «rightkey»
+	Estatuto : •Condicion «rightkey»
+	Asignacion : •id equals Expresion semcolon «id»
+	Asignacion : •id equals Expresion semcolon «if»
+	Asignacion : •id equals Expresion semcolon «print»
+	Escritura : •print leftpar Recesc rightpar semcolon «id»
+	Escritura : •print leftpar Recesc rightpar semcolon «if»
+	Escritura : •print leftpar Recesc rightpar semcolon «print»
+	Condicion : •if leftpar Expresion rightpar then Bloque semcolon «id»
+	Condicion : •if leftpar Expresion rightpar then Bloque else Bloque semcolon «id»
+	Condicion : •if leftpar Expresion rightpar then Bloque semcolon «if»
+	Condicion : •if leftpar Expresion rightpar then Bloque else Bloque semcolon «if»
+	Condicion : •if leftpar Expresion rightpar then Bloque semcolon «print»
+	Condicion : •if leftpar Expresion rightpar then Bloque else Bloque semcolon «print»
+	Asignacion : •id equals Expresion semcolon «rightkey»
+	Escritura : •print leftpar Recesc rightpar semcolon «rightkey»
+	Condicion : •if leftpar Expresion rightpar then Bloque semcolon «rightkey»
+	Condicion : •if leftpar Expresion rightpar then Bloque else Bloque semcolon «rightkey»
+}
+Transitions:
+	id -> 13
+	Estatuto -> 16
+	Asignacion -> 17
+	Escritura -> 18
+	Condicion -> 19
+	if -> 20
+	print -> 21
+	Estatutos -> 26
+
+
+S17{
+	Estatuto : Asignacion• «id»
+	Estatuto : Asignacion• «if»
+	Estatuto : Asignacion• «print»
+	Estatuto : Asignacion• «rightkey»
+}
+Transitions:
+
+
+S18{
+	Estatuto : Escritura• «id»
+	Estatuto : Escritura• «if»
+	Estatuto : Escritura• «print»
+	Estatuto : Escritura• «rightkey»
+}
+Transitions:
+
+
+S19{
+	Estatuto : Condicion• «id»
+	Estatuto : Condicion• «if»
+	Estatuto : Condicion• «print»
+	Estatuto : Condicion• «rightkey»
+}
+Transitions:
+
+
+S20{
+	Condicion : if •leftpar Expresion rightpar then Bloque semcolon «id»
+	Condicion : if •leftpar Expresion rightpar then Bloque else Bloque semcolon «id»
+	Condicion : if •leftpar Expresion rightpar then Bloque semcolon «if»
+	Condicion : if •leftpar Expresion rightpar then Bloque else Bloque semcolon «if»
+	Condicion : if •leftpar Expresion rightpar then Bloque semcolon «print»
+	Condicion : if •leftpar Expresion rightpar then Bloque else Bloque semcolon «print»
+	Condicion : if •leftpar Expresion rightpar then Bloque semcolon «rightkey»
+	Condicion : if •leftpar Expresion rightpar then Bloque else Bloque semcolon «rightkey»
+}
+Transitions:
+	leftpar -> 27
+
+
+S21{
+	Escritura : print •leftpar Recesc rightpar semcolon «id»
+	Escritura : print •leftpar Recesc rightpar semcolon «if»
+	Escritura : print •leftpar Recesc rightpar semcolon «print»
+	Escritura : print •leftpar Recesc rightpar semcolon «rightkey»
+}
+Transitions:
+	leftpar -> 28
+
+
+S22{
+	Recids : id comma •Recids «colon»
+	Recids : •id «colon»
+	Recids : •id comma Recids «colon»
+}
+Transitions:
+	id -> 10
+	Recids -> 29
+
+
+S23{
+	Recvars : Recids colon •Tipo semcolon Recvars «leftkey»
+	Recvars : Recids colon •Tipo semcolon «leftkey»
+	Tipo : •tint «semcolon»
+	Tipo : •tfloat «semcolon»
+	Tipo : •tstring «semcolon»
+}
+Transitions:
+	Tipo -> 30
+	tint -> 31
+	tfloat -> 32
+	tstring -> 33
+
+
+S24{
+	Asignacion : id equals •Expresion semcolon «id»
+	Asignacion : id equals •Expresion semcolon «if»
+	Asignacion : id equals •Expresion semcolon «print»
+	Asignacion : id equals •Expresion semcolon «rightkey»
+	Expresion : •Exp less Exp «semcolon»
+	Expresion : •Exp greater Exp «semcolon»
+	Expresion : •Exp diff Exp «semcolon»
+	Expresion : •Exp «semcolon»
+	Exp : •Termino Recexp «less»
+	Exp : •Termino «less»
+	Exp : •Termino Recexp «greater»
+	Exp : •Termino «greater»
+	Exp : •Termino Recexp «diff»
+	Exp : •Termino «diff»
+	Exp : •Termino Recexp «semcolon»
+	Exp : •Termino «semcolon»
+	Termino : •Factor Recterm «ex»
+	Termino : •Factor «ex»
+	Termino : •Factor Recterm «less»
+	Termino : •Factor «less»
+	Termino : •Factor Recterm «greater»
+	Termino : •Factor «greater»
+	Termino : •Factor Recterm «diff»
+	Termino : •Factor «diff»
+	Termino : •Factor Recterm «semcolon»
+	Termino : •Factor «semcolon»
+	Factor : •leftpar Expresion rightpar «term»
+	Factor : •ex Cte «term»
+	Factor : •Cte «term»
+	Factor : •leftpar Expresion rightpar «ex»
+	Factor : •ex Cte «ex»
+	Factor : •Cte «ex»
+	Factor : •leftpar Expresion rightpar «less»
+	Factor : •ex Cte «less»
+	Factor : •Cte «less»
+	Factor : •leftpar Expresion rightpar «greater»
+	Factor : •ex Cte «greater»
+	Factor : •Cte «greater»
+	Factor : •leftpar Expresion rightpar «diff»
+	Factor : •ex Cte «diff»
+	Factor : •Cte «diff»
+	Factor : •leftpar Expresion rightpar «semcolon»
+	Factor : •ex Cte «semcolon»
+	Factor : •Cte «semcolon»
+	Cte : •id «term»
+	Cte : •int «term»
+	Cte : •string «term»
+	Cte : •float «term»
+	Cte : •id «ex»
+	Cte : •int «ex»
+	Cte : •string «ex»
+	Cte : •float «ex»
+	Cte : •id «less»
+	Cte : •int «less»
+	Cte : •string «less»
+	Cte : •float «less»
+	Cte : •id «greater»
+	Cte : •int «greater»
+	Cte : •string «greater»
+	Cte : •float «greater»
+	Cte : •id «diff»
+	Cte : •int «diff»
+	Cte : •string «diff»
+	Cte : •float «diff»
+	Cte : •id «semcolon»
+	Cte : •int «semcolon»
+	Cte : •string «semcolon»
+	Cte : •float «semcolon»
+}
+Transitions:
+	id -> 34
+	Expresion -> 35
+	Exp -> 36
+	leftpar -> 37
+	Termino -> 38
+	ex -> 39
+	Factor -> 40
+	Cte -> 41
+	string -> 42
+	int -> 43
+	float -> 44
+
+
+S25{
+	Bloque : leftkey Estatutos rightkey• «$»
+}
+Transitions:
+
+
+S26{
+	Estatutos : Estatuto Estatutos• «rightkey»
+}
+Transitions:
+
+
+S27{
+	Condicion : if leftpar •Expresion rightpar then Bloque semcolon «id»
+	Condicion : if leftpar •Expresion rightpar then Bloque else Bloque semcolon «id»
+	Condicion : if leftpar •Expresion rightpar then Bloque semcolon «if»
+	Condicion : if leftpar •Expresion rightpar then Bloque else Bloque semcolon «if»
+	Condicion : if leftpar •Expresion rightpar then Bloque semcolon «print»
+	Condicion : if leftpar •Expresion rightpar then Bloque else Bloque semcolon «print»
+	Condicion : if leftpar •Expresion rightpar then Bloque semcolon «rightkey»
+	Condicion : if leftpar •Expresion rightpar then Bloque else Bloque semcolon «rightkey»
+	Expresion : •Exp less Exp «rightpar»
+	Expresion : •Exp greater Exp «rightpar»
+	Expresion : •Exp diff Exp «rightpar»
+	Expresion : •Exp «rightpar»
+	Exp : •Termino Recexp «less»
+	Exp : •Termino «less»
+	Exp : •Termino Recexp «greater»
+	Exp : •Termino «greater»
+	Exp : •Termino Recexp «diff»
+	Exp : •Termino «diff»
+	Exp : •Termino Recexp «rightpar»
+	Exp : •Termino «rightpar»
+	Termino : •Factor Recterm «ex»
+	Termino : •Factor «ex»
+	Termino : •Factor Recterm «less»
+	Termino : •Factor «less»
+	Termino : •Factor Recterm «greater»
+	Termino : •Factor «greater»
+	Termino : •Factor Recterm «diff»
+	Termino : •Factor «diff»
+	Termino : •Factor Recterm «rightpar»
+	Termino : •Factor «rightpar»
+	Factor : •leftpar Expresion rightpar «term»
+	Factor : •ex Cte «term»
+	Factor : •Cte «term»
+	Factor : •leftpar Expresion rightpar «ex»
+	Factor : •ex Cte «ex»
+	Factor : •Cte «ex»
+	Factor : •leftpar Expresion rightpar «less»
+	Factor : •ex Cte «less»
+	Factor : •Cte «less»
+	Factor : •leftpar Expresion rightpar «greater»
+	Factor : •ex Cte «greater»
+	Factor : •Cte «greater»
+	Factor : •leftpar Expresion rightpar «diff»
+	Factor : •ex Cte «diff»
+	Factor : •Cte «diff»
+	Factor : •leftpar Expresion rightpar «rightpar»
+	Factor : •ex Cte «rightpar»
+	Factor : •Cte «rightpar»
+	Cte : •id «term»
+	Cte : •int «term»
+	Cte : •string «term»
+	Cte : •float «term»
+	Cte : •id «ex»
+	Cte : •int «ex»
+	Cte : •string «ex»
+	Cte : •float «ex»
+	Cte : •id «less»
+	Cte : •int «less»
+	Cte : •string «less»
+	Cte : •float «less»
+	Cte : •id «greater»
+	Cte : •int «greater»
+	Cte : •string «greater»
+	Cte : •float «greater»
+	Cte : •id «diff»
+	Cte : •int «diff»
+	Cte : •string «diff»
+	Cte : •float «diff»
+	Cte : •id «rightpar»
+	Cte : •int «rightpar»
+	Cte : •string «rightpar»
+	Cte : •float «rightpar»
+}
+Transitions:
+	id -> 45
+	Expresion -> 46
+	Exp -> 47
+	leftpar -> 48
+	Termino -> 49
+	ex -> 50
+	Factor -> 51
+	Cte -> 52
+	string -> 53
+	int -> 54
+	float -> 55
+
+
+S28{
+	Escritura : print leftpar •Recesc rightpar semcolon «id»
+	Escritura : print leftpar •Recesc rightpar semcolon «if»
+	Escritura : print leftpar •Recesc rightpar semcolon «print»
+	Escritura : print leftpar •Recesc rightpar semcolon «rightkey»
+	Recesc : •Expresion comma Recesc «rightpar»
+	Recesc : •string comma Recesc «rightpar»
+	Recesc : •Expresion «rightpar»
+	Recesc : •string «rightpar»
+	Expresion : •Exp less Exp «comma»
+	Expresion : •Exp greater Exp «comma»
+	Expresion : •Exp diff Exp «comma»
+	Expresion : •Exp «comma»
+	Expresion : •Exp less Exp «rightpar»
+	Expresion : •Exp greater Exp «rightpar»
+	Expresion : •Exp diff Exp «rightpar»
+	Expresion : •Exp «rightpar»
+	Exp : •Termino Recexp «less»
+	Exp : •Termino «less»
+	Exp : •Termino Recexp «greater»
+	Exp : •Termino «greater»
+	Exp : •Termino Recexp «diff»
+	Exp : •Termino «diff»
+	Exp : •Termino Recexp «comma»
+	Exp : •Termino «comma»
+	Exp : •Termino Recexp «rightpar»
+	Exp : •Termino «rightpar»
+	Termino : •Factor Recterm «ex»
+	Termino : •Factor «ex»
+	Termino : •Factor Recterm «less»
+	Termino : •Factor «less»
+	Termino : •Factor Recterm «greater»
+	Termino : •Factor «greater»
+	Termino : •Factor Recterm «diff»
+	Termino : •Factor «diff»
+	Termino : •Factor Recterm «comma»
+	Termino : •Factor «comma»
+	Termino : •Factor Recterm «rightpar»
+	Termino : •Factor «rightpar»
+	Factor : •leftpar Expresion rightpar «term»
+	Factor : •ex Cte «term»
+	Factor : •Cte «term»
+	Factor : •leftpar Expresion rightpar «ex»
+	Factor : •ex Cte «ex»
+	Factor : •Cte «ex»
+	Factor : •leftpar Expresion rightpar «less»
+	Factor : •ex Cte «less»
+	Factor : •Cte «less»
+	Factor : •leftpar Expresion rightpar «greater»
+	Factor : •ex Cte «greater»
+	Factor : •Cte «greater»
+	Factor : •leftpar Expresion rightpar «diff»
+	Factor : •ex Cte «diff»
+	Factor : •Cte «diff»
+	Factor : •leftpar Expresion rightpar «comma»
+	Factor : •ex Cte «comma»
+	Factor : •Cte «comma»
+	Factor : •leftpar Expresion rightpar «rightpar»
+	Factor : •ex Cte «rightpar»
+	Factor : •Cte «rightpar»
+	Cte : •id «term»
+	Cte : •int «term»
+	Cte : •string «term»
+	Cte : •float «term»
+	Cte : •id «ex»
+	Cte : •int «ex»
+	Cte : •string «ex»
+	Cte : •float «ex»
+	Cte : •id «less»
+	Cte : •int «less»
+	Cte : •string «less»
+	Cte : •float «less»
+	Cte : •id «greater»
+	Cte : •int «greater»
+	Cte : •string «greater»
+	Cte : •float «greater»
+	Cte : •id «diff»
+	Cte : •int «diff»
+	Cte : •string «diff»
+	Cte : •float «diff»
+	Cte : •id «comma»
+	Cte : •int «comma»
+	Cte : •string «comma»
+	Cte : •float «comma»
+	Cte : •id «rightpar»
+	Cte : •int «rightpar»
+	Cte : •string «rightpar»
+	Cte : •float «rightpar»
+}
+Transitions:
+	id -> 56
+	Expresion -> 57
+	Exp -> 58
+	leftpar -> 59
+	Termino -> 60
+	ex -> 61
+	Factor -> 62
+	Cte -> 63
+	Recesc -> 64
+	string -> 65
+	int -> 66
+	float -> 67
+
+
+S29{
+	Recids : id comma Recids• «colon»
+}
+Transitions:
+
+
+S30{
+	Recvars : Recids colon Tipo •semcolon Recvars «leftkey»
+	Recvars : Recids colon Tipo •semcolon «leftkey»
+}
+Transitions:
+	semcolon -> 68
+
+
+S31{
+	Tipo : tint• «semcolon»
+}
+Transitions:
+
+
+S32{
+	Tipo : tfloat• «semcolon»
+}
+Transitions:
+
+
+S33{
+	Tipo : tstring• «semcolon»
+}
+Transitions:
+
+
+S34{
+	Cte : id• «term»
+	Cte : id• «ex»
+	Cte : id• «less»
+	Cte : id• «greater»
+	Cte : id• «diff»
+	Cte : id• «semcolon»
+}
+Transitions:
+
+
+S35{
+	Asignacion : id equals Expresion •semcolon «id»
+	Asignacion : id equals Expresion •semcolon «if»
+	Asignacion : id equals Expresion •semcolon «print»
+	Asignacion : id equals Expresion •semcolon «rightkey»
+}
+Transitions:
+	semcolon -> 69
+
+
+S36{
+	Expresion : Exp •less Exp «semcolon»
+	Expresion : Exp •greater Exp «semcolon»
+	Expresion : Exp •diff Exp «semcolon»
+	Expresion : Exp• «semcolon»
+}
+Transitions:
+	less -> 70
+	greater -> 71
+	diff -> 72
+
+
+S37{
+	Factor : leftpar •Expresion rightpar «term»
+	Factor : leftpar •Expresion rightpar «ex»
+	Factor : leftpar •Expresion rightpar «less»
+	Factor : leftpar •Expresion rightpar «greater»
+	Factor : leftpar •Expresion rightpar «diff»
+	Factor : leftpar •Expresion rightpar «semcolon»
+	Expresion : •Exp less Exp «rightpar»
+	Expresion : •Exp greater Exp «rightpar»
+	Expresion : •Exp diff Exp «rightpar»
+	Expresion : •Exp «rightpar»
+	Exp : •Termino Recexp «less»
+	Exp : •Termino «less»
+	Exp : •Termino Recexp «greater»
+	Exp : •Termino «greater»
+	Exp : •Termino Recexp «diff»
+	Exp : •Termino «diff»
+	Exp : •Termino Recexp «rightpar»
+	Exp : •Termino «rightpar»
+	Termino : •Factor Recterm «ex»
+	Termino : •Factor «ex»
+	Termino : •Factor Recterm «less»
+	Termino : •Factor «less»
+	Termino : •Factor Recterm «greater»
+	Termino : •Factor «greater»
+	Termino : •Factor Recterm «diff»
+	Termino : •Factor «diff»
+	Termino : •Factor Recterm «rightpar»
+	Termino : •Factor «rightpar»
+	Factor : •leftpar Expresion rightpar «term»
+	Factor : •ex Cte «term»
+	Factor : •Cte «term»
+	Factor : •leftpar Expresion rightpar «ex»
+	Factor : •ex Cte «ex»
+	Factor : •Cte «ex»
+	Factor : •leftpar Expresion rightpar «less»
+	Factor : •ex Cte «less»
+	Factor : •Cte «less»
+	Factor : •leftpar Expresion rightpar «greater»
+	Factor : •ex Cte «greater»
+	Factor : •Cte «greater»
+	Factor : •leftpar Expresion rightpar «diff»
+	Factor : •ex Cte «diff»
+	Factor : •Cte «diff»
+	Factor : •leftpar Expresion rightpar «rightpar»
+	Factor : •ex Cte «rightpar»
+	Factor : •Cte «rightpar»
+	Cte : •id «term»
+	Cte : •int «term»
+	Cte : •string «term»
+	Cte : •float «term»
+	Cte : •id «ex»
+	Cte : •int «ex»
+	Cte : •string «ex»
+	Cte : •float «ex»
+	Cte : •id «less»
+	Cte : •int «less»
+	Cte : •string «less»
+	Cte : •float «less»
+	Cte : •id «greater»
+	Cte : •int «greater»
+	Cte : •string «greater»
+	Cte : •float «greater»
+	Cte : •id «diff»
+	Cte : •int «diff»
+	Cte : •string «diff»
+	Cte : •float «diff»
+	Cte : •id «rightpar»
+	Cte : •int «rightpar»
+	Cte : •string «rightpar»
+	Cte : •float «rightpar»
+}
+Transitions:
+	id -> 45
+	Exp -> 47
+	leftpar -> 48
+	Termino -> 49
+	ex -> 50
+	Factor -> 51
+	Cte -> 52
+	string -> 53
+	int -> 54
+	float -> 55
+	Expresion -> 73
+
+
+S38{
+	Exp : Termino •Recexp «less»
+	Exp : Termino• «less»
+	Exp : Termino •Recexp «greater»
+	Exp : Termino• «greater»
+	Exp : Termino •Recexp «diff»
+	Exp : Termino• «diff»
+	Exp : Termino •Recexp «semcolon»
+	Exp : Termino• «semcolon»
+	Recexp : •ex Exp «less»
+	Recexp : •ex Exp «greater»
+	Recexp : •ex Exp «diff»
+	Recexp : •ex Exp «semcolon»
+}
+Transitions:
+	Recexp -> 74
+	ex -> 75
+
+
+S39{
+	Factor : ex •Cte «term»
+	Factor : ex •Cte «ex»
+	Factor : ex •Cte «less»
+	Factor : ex •Cte «greater»
+	Factor : ex •Cte «diff»
+	Factor : ex •Cte «semcolon»
+	Cte : •id «term»
+	Cte : •int «term»
+	Cte : •string «term»
+	Cte : •float «term»
+	Cte : •id «ex»
+	Cte : •int «ex»
+	Cte : •string «ex»
+	Cte : •float «ex»
+	Cte : •id «less»
+	Cte : •int «less»
+	Cte : •string «less»
+	Cte : •float «less»
+	Cte : •id «greater»
+	Cte : •int «greater»
+	Cte : •string «greater»
+	Cte : •float «greater»
+	Cte : •id «diff»
+	Cte : •int «diff»
+	Cte : •string «diff»
+	Cte : •float «diff»
+	Cte : •id «semcolon»
+	Cte : •int «semcolon»
+	Cte : •string «semcolon»
+	Cte : •float «semcolon»
+}
+Transitions:
+	id -> 34
+	string -> 42
+	int -> 43
+	float -> 44
+	Cte -> 76
+
+
+S40{
+	Termino : Factor •Recterm «ex»
+	Termino : Factor• «ex»
+	Termino : Factor •Recterm «less»
+	Termino : Factor• «less»
+	Termino : Factor •Recterm «greater»
+	Termino : Factor• «greater»
+	Termino : Factor •Recterm «diff»
+	Termino : Factor• «diff»
+	Termino : Factor •Recterm «semcolon»
+	Termino : Factor• «semcolon»
+	Recterm : •term Termino «ex»
+	Recterm : •term Termino «less»
+	Recterm : •term Termino «greater»
+	Recterm : •term Termino «diff»
+	Recterm : •term Termino «semcolon»
+}
+Transitions:
+	Recterm -> 77
+	term -> 78
+
+
+S41{
+	Factor : Cte• «term»
+	Factor : Cte• «ex»
+	Factor : Cte• «less»
+	Factor : Cte• «greater»
+	Factor : Cte• «diff»
+	Factor : Cte• «semcolon»
+}
+Transitions:
+
+
+S42{
+	Cte : string• «term»
+	Cte : string• «ex»
+	Cte : string• «less»
+	Cte : string• «greater»
+	Cte : string• «diff»
+	Cte : string• «semcolon»
+}
+Transitions:
+
+
+S43{
+	Cte : int• «term»
+	Cte : int• «ex»
+	Cte : int• «less»
+	Cte : int• «greater»
+	Cte : int• «diff»
+	Cte : int• «semcolon»
+}
+Transitions:
+
+
+S44{
+	Cte : float• «term»
+	Cte : float• «ex»
+	Cte : float• «less»
+	Cte : float• «greater»
+	Cte : float• «diff»
+	Cte : float• «semcolon»
+}
+Transitions:
+
+
+S45{
+	Cte : id• «term»
+	Cte : id• «ex»
+	Cte : id• «less»
+	Cte : id• «greater»
+	Cte : id• «diff»
+	Cte : id• «rightpar»
+}
+Transitions:
+
+
+S46{
+	Condicion : if leftpar Expresion •rightpar then Bloque semcolon «id»
+	Condicion : if leftpar Expresion •rightpar then Bloque else Bloque semcolon «id»
+	Condicion : if leftpar Expresion •rightpar then Bloque semcolon «if»
+	Condicion : if leftpar Expresion •rightpar then Bloque else Bloque semcolon «if»
+	Condicion : if leftpar Expresion •rightpar then Bloque semcolon «print»
+	Condicion : if leftpar Expresion •rightpar then Bloque else Bloque semcolon «print»
+	Condicion : if leftpar Expresion •rightpar then Bloque semcolon «rightkey»
+	Condicion : if leftpar Expresion •rightpar then Bloque else Bloque semcolon «rightkey»
+}
+Transitions:
+	rightpar -> 79
+
+
+S47{
+	Expresion : Exp •less Exp «rightpar»
+	Expresion : Exp •greater Exp «rightpar»
+	Expresion : Exp •diff Exp «rightpar»
+	Expresion : Exp• «rightpar»
+}
+Transitions:
+	less -> 80
+	greater -> 81
+	diff -> 82
+
+
+S48{
+	Factor : leftpar •Expresion rightpar «term»
+	Factor : leftpar •Expresion rightpar «ex»
+	Factor : leftpar •Expresion rightpar «less»
+	Factor : leftpar •Expresion rightpar «greater»
+	Factor : leftpar •Expresion rightpar «diff»
+	Factor : leftpar •Expresion rightpar «rightpar»
+	Expresion : •Exp less Exp «rightpar»
+	Expresion : •Exp greater Exp «rightpar»
+	Expresion : •Exp diff Exp «rightpar»
+	Expresion : •Exp «rightpar»
+	Exp : •Termino Recexp «less»
+	Exp : •Termino «less»
+	Exp : •Termino Recexp «greater»
+	Exp : •Termino «greater»
+	Exp : •Termino Recexp «diff»
+	Exp : •Termino «diff»
+	Exp : •Termino Recexp «rightpar»
+	Exp : •Termino «rightpar»
+	Termino : •Factor Recterm «ex»
+	Termino : •Factor «ex»
+	Termino : •Factor Recterm «less»
+	Termino : •Factor «less»
+	Termino : •Factor Recterm «greater»
+	Termino : •Factor «greater»
+	Termino : •Factor Recterm «diff»
+	Termino : •Factor «diff»
+	Termino : •Factor Recterm «rightpar»
+	Termino : •Factor «rightpar»
+	Factor : •leftpar Expresion rightpar «term»
+	Factor : •ex Cte «term»
+	Factor : •Cte «term»
+	Factor : •leftpar Expresion rightpar «ex»
+	Factor : •ex Cte «ex»
+	Factor : •Cte «ex»
+	Factor : •leftpar Expresion rightpar «less»
+	Factor : •ex Cte «less»
+	Factor : •Cte «less»
+	Factor : •leftpar Expresion rightpar «greater»
+	Factor : •ex Cte «greater»
+	Factor : •Cte «greater»
+	Factor : •leftpar Expresion rightpar «diff»
+	Factor : •ex Cte «diff»
+	Factor : •Cte «diff»
+	Factor : •leftpar Expresion rightpar «rightpar»
+	Factor : •ex Cte «rightpar»
+	Factor : •Cte «rightpar»
+	Cte : •id «term»
+	Cte : •int «term»
+	Cte : •string «term»
+	Cte : •float «term»
+	Cte : •id «ex»
+	Cte : •int «ex»
+	Cte : •string «ex»
+	Cte : •float «ex»
+	Cte : •id «less»
+	Cte : •int «less»
+	Cte : •string «less»
+	Cte : •float «less»
+	Cte : •id «greater»
+	Cte : •int «greater»
+	Cte : •string «greater»
+	Cte : •float «greater»
+	Cte : •id «diff»
+	Cte : •int «diff»
+	Cte : •string «diff»
+	Cte : •float «diff»
+	Cte : •id «rightpar»
+	Cte : •int «rightpar»
+	Cte : •string «rightpar»
+	Cte : •float «rightpar»
+}
+Transitions:
+	id -> 45
+	Exp -> 47
+	leftpar -> 48
+	Termino -> 49
+	ex -> 50
+	Factor -> 51
+	Cte -> 52
+	string -> 53
+	int -> 54
+	float -> 55
+	Expresion -> 83
+
+
+S49{
+	Exp : Termino •Recexp «less»
+	Exp : Termino• «less»
+	Exp : Termino •Recexp «greater»
+	Exp : Termino• «greater»
+	Exp : Termino •Recexp «diff»
+	Exp : Termino• «diff»
+	Exp : Termino •Recexp «rightpar»
+	Exp : Termino• «rightpar»
+	Recexp : •ex Exp «less»
+	Recexp : •ex Exp «greater»
+	Recexp : •ex Exp «diff»
+	Recexp : •ex Exp «rightpar»
+}
+Transitions:
+	Recexp -> 84
+	ex -> 85
+
+
+S50{
+	Factor : ex •Cte «term»
+	Factor : ex •Cte «ex»
+	Factor : ex •Cte «less»
+	Factor : ex •Cte «greater»
+	Factor : ex •Cte «diff»
+	Factor : ex •Cte «rightpar»
+	Cte : •id «term»
+	Cte : •int «term»
+	Cte : •string «term»
+	Cte : •float «term»
+	Cte : •id «ex»
+	Cte : •int «ex»
+	Cte : •string «ex»
+	Cte : •float «ex»
+	Cte : •id «less»
+	Cte : •int «less»
+	Cte : •string «less»
+	Cte : •float «less»
+	Cte : •id «greater»
+	Cte : •int «greater»
+	Cte : •string «greater»
+	Cte : •float «greater»
+	Cte : •id «diff»
+	Cte : •int «diff»
+	Cte : •string «diff»
+	Cte : •float «diff»
+	Cte : •id «rightpar»
+	Cte : •int «rightpar»
+	Cte : •string «rightpar»
+	Cte : •float «rightpar»
+}
+Transitions:
+	id -> 45
+	string -> 53
+	int -> 54
+	float -> 55
+	Cte -> 86
+
+
+S51{
+	Termino : Factor •Recterm «ex»
+	Termino : Factor• «ex»
+	Termino : Factor •Recterm «less»
+	Termino : Factor• «less»
+	Termino : Factor •Recterm «greater»
+	Termino : Factor• «greater»
+	Termino : Factor •Recterm «diff»
+	Termino : Factor• «diff»
+	Termino : Factor •Recterm «rightpar»
+	Termino : Factor• «rightpar»
+	Recterm : •term Termino «ex»
+	Recterm : •term Termino «less»
+	Recterm : •term Termino «greater»
+	Recterm : •term Termino «diff»
+	Recterm : •term Termino «rightpar»
+}
+Transitions:
+	Recterm -> 87
+	term -> 88
+
+
+S52{
+	Factor : Cte• «term»
+	Factor : Cte• «ex»
+	Factor : Cte• «less»
+	Factor : Cte• «greater»
+	Factor : Cte• «diff»
+	Factor : Cte• «rightpar»
+}
+Transitions:
+
+
+S53{
+	Cte : string• «term»
+	Cte : string• «ex»
+	Cte : string• «less»
+	Cte : string• «greater»
+	Cte : string• «diff»
+	Cte : string• «rightpar»
+}
+Transitions:
+
+
+S54{
+	Cte : int• «term»
+	Cte : int• «ex»
+	Cte : int• «less»
+	Cte : int• «greater»
+	Cte : int• «diff»
+	Cte : int• «rightpar»
+}
+Transitions:
+
+
+S55{
+	Cte : float• «term»
+	Cte : float• «ex»
+	Cte : float• «less»
+	Cte : float• «greater»
+	Cte : float• «diff»
+	Cte : float• «rightpar»
+}
+Transitions:
+
+
+S56{
+	Cte : id• «term»
+	Cte : id• «ex»
+	Cte : id• «less»
+	Cte : id• «greater»
+	Cte : id• «diff»
+	Cte : id• «comma»
+	Cte : id• «rightpar»
+}
+Transitions:
+
+
+S57{
+	Recesc : Expresion •comma Recesc «rightpar»
+	Recesc : Expresion• «rightpar»
+}
+Transitions:
+	comma -> 89
+
+
+S58{
+	Expresion : Exp •less Exp «comma»
+	Expresion : Exp •greater Exp «comma»
+	Expresion : Exp •diff Exp «comma»
+	Expresion : Exp• «comma»
+	Expresion : Exp •less Exp «rightpar»
+	Expresion : Exp •greater Exp «rightpar»
+	Expresion : Exp •diff Exp «rightpar»
+	Expresion : Exp• «rightpar»
+}
+Transitions:
+	less -> 90
+	greater -> 91
+	diff -> 92
+
+
+S59{
+	Factor : leftpar •Expresion rightpar «term»
+	Factor : leftpar •Expresion rightpar «ex»
+	Factor : leftpar •Expresion rightpar «less»
+	Factor : leftpar •Expresion rightpar «greater»
+	Factor : leftpar •Expresion rightpar «diff»
+	Factor : leftpar •Expresion rightpar «comma»
+	Factor : leftpar •Expresion rightpar «rightpar»
+	Expresion : •Exp less Exp «rightpar»
+	Expresion : •Exp greater Exp «rightpar»
+	Expresion : •Exp diff Exp «rightpar»
+	Expresion : •Exp «rightpar»
+	Exp : •Termino Recexp «less»
+	Exp : •Termino «less»
+	Exp : •Termino Recexp «greater»
+	Exp : •Termino «greater»
+	Exp : •Termino Recexp «diff»
+	Exp : •Termino «diff»
+	Exp : •Termino Recexp «rightpar»
+	Exp : •Termino «rightpar»
+	Termino : •Factor Recterm «ex»
+	Termino : •Factor «ex»
+	Termino : •Factor Recterm «less»
+	Termino : •Factor «less»
+	Termino : •Factor Recterm «greater»
+	Termino : •Factor «greater»
+	Termino : •Factor Recterm «diff»
+	Termino : •Factor «diff»
+	Termino : •Factor Recterm «rightpar»
+	Termino : •Factor «rightpar»
+	Factor : •leftpar Expresion rightpar «term»
+	Factor : •ex Cte «term»
+	Factor : •Cte «term»
+	Factor : •leftpar Expresion rightpar «ex»
+	Factor : •ex Cte «ex»
+	Factor : •Cte «ex»
+	Factor : •leftpar Expresion rightpar «less»
+	Factor : •ex Cte «less»
+	Factor : •Cte «less»
+	Factor : •leftpar Expresion rightpar «greater»
+	Factor : •ex Cte «greater»
+	Factor : •Cte «greater»
+	Factor : •leftpar Expresion rightpar «diff»
+	Factor : •ex Cte «diff»
+	Factor : •Cte «diff»
+	Factor : •leftpar Expresion rightpar «rightpar»
+	Factor : •ex Cte «rightpar»
+	Factor : •Cte «rightpar»
+	Cte : •id «term»
+	Cte : •int «term»
+	Cte : •string «term»
+	Cte : •float «term»
+	Cte : •id «ex»
+	Cte : •int «ex»
+	Cte : •string «ex»
+	Cte : •float «ex»
+	Cte : •id «less»
+	Cte : •int «less»
+	Cte : •string «less»
+	Cte : •float «less»
+	Cte : •id «greater»
+	Cte : •int «greater»
+	Cte : •string «greater»
+	Cte : •float «greater»
+	Cte : •id «diff»
+	Cte : •int «diff»
+	Cte : •string «diff»
+	Cte : •float «diff»
+	Cte : •id «rightpar»
+	Cte : •int «rightpar»
+	Cte : •string «rightpar»
+	Cte : •float «rightpar»
+}
+Transitions:
+	id -> 45
+	Exp -> 47
+	leftpar -> 48
+	Termino -> 49
+	ex -> 50
+	Factor -> 51
+	Cte -> 52
+	string -> 53
+	int -> 54
+	float -> 55
+	Expresion -> 93
+
+
+S60{
+	Exp : Termino •Recexp «less»
+	Exp : Termino• «less»
+	Exp : Termino •Recexp «greater»
+	Exp : Termino• «greater»
+	Exp : Termino •Recexp «diff»
+	Exp : Termino• «diff»
+	Exp : Termino •Recexp «comma»
+	Exp : Termino• «comma»
+	Exp : Termino •Recexp «rightpar»
+	Exp : Termino• «rightpar»
+	Recexp : •ex Exp «less»
+	Recexp : •ex Exp «greater»
+	Recexp : •ex Exp «diff»
+	Recexp : •ex Exp «comma»
+	Recexp : •ex Exp «rightpar»
+}
+Transitions:
+	Recexp -> 94
+	ex -> 95
+
+
+S61{
+	Factor : ex •Cte «term»
+	Factor : ex •Cte «ex»
+	Factor : ex •Cte «less»
+	Factor : ex •Cte «greater»
+	Factor : ex •Cte «diff»
+	Factor : ex •Cte «comma»
+	Factor : ex •Cte «rightpar»
+	Cte : •id «term»
+	Cte : •int «term»
+	Cte : •string «term»
+	Cte : •float «term»
+	Cte : •id «ex»
+	Cte : •int «ex»
+	Cte : •string «ex»
+	Cte : •float «ex»
+	Cte : •id «less»
+	Cte : •int «less»
+	Cte : •string «less»
+	Cte : •float «less»
+	Cte : •id «greater»
+	Cte : •int «greater»
+	Cte : •string «greater»
+	Cte : •float «greater»
+	Cte : •id «diff»
+	Cte : •int «diff»
+	Cte : •string «diff»
+	Cte : •float «diff»
+	Cte : •id «comma»
+	Cte : •int «comma»
+	Cte : •string «comma»
+	Cte : •float «comma»
+	Cte : •id «rightpar»
+	Cte : •int «rightpar»
+	Cte : •string «rightpar»
+	Cte : •float «rightpar»
+}
+Transitions:
+	id -> 56
+	int -> 66
+	float -> 67
+	Cte -> 96
+	string -> 97
+
+
+S62{
+	Termino : Factor •Recterm «ex»
+	Termino : Factor• «ex»
+	Termino : Factor •Recterm «less»
+	Termino : Factor• «less»
+	Termino : Factor •Recterm «greater»
+	Termino : Factor• «greater»
+	Termino : Factor •Recterm «diff»
+	Termino : Factor• «diff»
+	Termino : Factor •Recterm «comma»
+	Termino : Factor• «comma»
+	Termino : Factor •Recterm «rightpar»
+	Termino : Factor• «rightpar»
+	Recterm : •term Termino «ex»
+	Recterm : •term Termino «less»
+	Recterm : •term Termino «greater»
+	Recterm : •term Termino «diff»
+	Recterm : •term Termino «comma»
+	Recterm : •term Termino «rightpar»
+}
+Transitions:
+	Recterm -> 98
+	term -> 99
+
+
+S63{
+	Factor : Cte• «term»
+	Factor : Cte• «ex»
+	Factor : Cte• «less»
+	Factor : Cte• «greater»
+	Factor : Cte• «diff»
+	Factor : Cte• «comma»
+	Factor : Cte• «rightpar»
+}
+Transitions:
+
+
+S64{
+	Escritura : print leftpar Recesc •rightpar semcolon «id»
+	Escritura : print leftpar Recesc •rightpar semcolon «if»
+	Escritura : print leftpar Recesc •rightpar semcolon «print»
+	Escritura : print leftpar Recesc •rightpar semcolon «rightkey»
+}
+Transitions:
+	rightpar -> 100
+
+
+S65{
+	Recesc : string •comma Recesc «rightpar»
+	Recesc : string• «rightpar»
+	Cte : string• «term»
+	Cte : string• «ex»
+	Cte : string• «less»
+	Cte : string• «greater»
+	Cte : string• «diff»
+	Cte : string• «comma»
+	Cte : string• «rightpar»
+}
+Transitions:
+	comma -> 101
+
+
+S66{
+	Cte : int• «term»
+	Cte : int• «ex»
+	Cte : int• «less»
+	Cte : int• «greater»
+	Cte : int• «diff»
+	Cte : int• «comma»
+	Cte : int• «rightpar»
+}
+Transitions:
+
+
+S67{
+	Cte : float• «term»
+	Cte : float• «ex»
+	Cte : float• «less»
+	Cte : float• «greater»
+	Cte : float• «diff»
+	Cte : float• «comma»
+	Cte : float• «rightpar»
+}
+Transitions:
+
+
+S68{
+	Recvars : Recids colon Tipo semcolon •Recvars «leftkey»
+	Recvars : Recids colon Tipo semcolon• «leftkey»
+	Recvars : •Recids colon Tipo semcolon Recvars «leftkey»
+	Recvars : •Recids colon Tipo semcolon «leftkey»
+	Recids : •id «colon»
+	Recids : •id comma Recids «colon»
+}
+Transitions:
+	id -> 10
+	Recids -> 12
+	Recvars -> 102
+
+
+S69{
+	Asignacion : id equals Expresion semcolon• «id»
+	Asignacion : id equals Expresion semcolon• «if»
+	Asignacion : id equals Expresion semcolon• «print»
+	Asignacion : id equals Expresion semcolon• «rightkey»
+}
+Transitions:
+
+
+S70{
+	Expresion : Exp less •Exp «semcolon»
+	Exp : •Termino Recexp «semcolon»
+	Exp : •Termino «semcolon»
+	Termino : •Factor Recterm «ex»
+	Termino : •Factor «ex»
+	Termino : •Factor Recterm «semcolon»
+	Termino : •Factor «semcolon»
+	Factor : •leftpar Expresion rightpar «term»
+	Factor : •ex Cte «term»
+	Factor : •Cte «term»
+	Factor : •leftpar Expresion rightpar «ex»
+	Factor : •ex Cte «ex»
+	Factor : •Cte «ex»
+	Factor : •leftpar Expresion rightpar «semcolon»
+	Factor : •ex Cte «semcolon»
+	Factor : •Cte «semcolon»
+	Cte : •id «term»
+	Cte : •int «term»
+	Cte : •string «term»
+	Cte : •float «term»
+	Cte : •id «ex»
+	Cte : •int «ex»
+	Cte : •string «ex»
+	Cte : •float «ex»
+	Cte : •id «semcolon»
+	Cte : •int «semcolon»
+	Cte : •string «semcolon»
+	Cte : •float «semcolon»
+}
+Transitions:
+	id -> 103
+	Exp -> 104
+	leftpar -> 105
+	Termino -> 106
+	ex -> 107
+	Factor -> 108
+	Cte -> 109
+	string -> 110
+	int -> 111
+	float -> 112
+
+
+S71{
+	Expresion : Exp greater •Exp «semcolon»
+	Exp : •Termino Recexp «semcolon»
+	Exp : •Termino «semcolon»
+	Termino : •Factor Recterm «ex»
+	Termino : •Factor «ex»
+	Termino : •Factor Recterm «semcolon»
+	Termino : •Factor «semcolon»
+	Factor : •leftpar Expresion rightpar «term»
+	Factor : •ex Cte «term»
+	Factor : •Cte «term»
+	Factor : •leftpar Expresion rightpar «ex»
+	Factor : •ex Cte «ex»
+	Factor : •Cte «ex»
+	Factor : •leftpar Expresion rightpar «semcolon»
+	Factor : •ex Cte «semcolon»
+	Factor : •Cte «semcolon»
+	Cte : •id «term»
+	Cte : •int «term»
+	Cte : •string «term»
+	Cte : •float «term»
+	Cte : •id «ex»
+	Cte : •int «ex»
+	Cte : •string «ex»
+	Cte : •float «ex»
+	Cte : •id «semcolon»
+	Cte : •int «semcolon»
+	Cte : •string «semcolon»
+	Cte : •float «semcolon»
+}
+Transitions:
+	id -> 103
+	leftpar -> 105
+	Termino -> 106
+	ex -> 107
+	Factor -> 108
+	Cte -> 109
+	string -> 110
+	int -> 111
+	float -> 112
+	Exp -> 113
+
+
+S72{
+	Expresion : Exp diff •Exp «semcolon»
+	Exp : •Termino Recexp «semcolon»
+	Exp : •Termino «semcolon»
+	Termino : •Factor Recterm «ex»
+	Termino : •Factor «ex»
+	Termino : •Factor Recterm «semcolon»
+	Termino : •Factor «semcolon»
+	Factor : •leftpar Expresion rightpar «term»
+	Factor : •ex Cte «term»
+	Factor : •Cte «term»
+	Factor : •leftpar Expresion rightpar «ex»
+	Factor : •ex Cte «ex»
+	Factor : •Cte «ex»
+	Factor : •leftpar Expresion rightpar «semcolon»
+	Factor : •ex Cte «semcolon»
+	Factor : •Cte «semcolon»
+	Cte : •id «term»
+	Cte : •int «term»
+	Cte : •string «term»
+	Cte : •float «term»
+	Cte : •id «ex»
+	Cte : •int «ex»
+	Cte : •string «ex»
+	Cte : •float «ex»
+	Cte : •id «semcolon»
+	Cte : •int «semcolon»
+	Cte : •string «semcolon»
+	Cte : •float «semcolon»
+}
+Transitions:
+	id -> 103
+	leftpar -> 105
+	Termino -> 106
+	ex -> 107
+	Factor -> 108
+	Cte -> 109
+	string -> 110
+	int -> 111
+	float -> 112
+	Exp -> 114
+
+
+S73{
+	Factor : leftpar Expresion •rightpar «term»
+	Factor : leftpar Expresion •rightpar «ex»
+	Factor : leftpar Expresion •rightpar «less»
+	Factor : leftpar Expresion •rightpar «greater»
+	Factor : leftpar Expresion •rightpar «diff»
+	Factor : leftpar Expresion •rightpar «semcolon»
+}
+Transitions:
+	rightpar -> 115
+
+
+S74{
+	Exp : Termino Recexp• «less»
+	Exp : Termino Recexp• «greater»
+	Exp : Termino Recexp• «diff»
+	Exp : Termino Recexp• «semcolon»
+}
+Transitions:
+
+
+S75{
+	Recexp : ex •Exp «less»
+	Recexp : ex •Exp «greater»
+	Recexp : ex •Exp «diff»
+	Recexp : ex •Exp «semcolon»
+	Exp : •Termino Recexp «less»
+	Exp : •Termino «less»
+	Exp : •Termino Recexp «greater»
+	Exp : •Termino «greater»
+	Exp : •Termino Recexp «diff»
+	Exp : •Termino «diff»
+	Exp : •Termino Recexp «semcolon»
+	Exp : •Termino «semcolon»
+	Termino : •Factor Recterm «ex»
+	Termino : •Factor «ex»
+	Termino : •Factor Recterm «less»
+	Termino : •Factor «less»
+	Termino : •Factor Recterm «greater»
+	Termino : •Factor «greater»
+	Termino : •Factor Recterm «diff»
+	Termino : •Factor «diff»
+	Termino : •Factor Recterm «semcolon»
+	Termino : •Factor «semcolon»
+	Factor : •leftpar Expresion rightpar «term»
+	Factor : •ex Cte «term»
+	Factor : •Cte «term»
+	Factor : •leftpar Expresion rightpar «ex»
+	Factor : •ex Cte «ex»
+	Factor : •Cte «ex»
+	Factor : •leftpar Expresion rightpar «less»
+	Factor : •ex Cte «less»
+	Factor : •Cte «less»
+	Factor : •leftpar Expresion rightpar «greater»
+	Factor : •ex Cte «greater»
+	Factor : •Cte «greater»
+	Factor : •leftpar Expresion rightpar «diff»
+	Factor : •ex Cte «diff»
+	Factor : •Cte «diff»
+	Factor : •leftpar Expresion rightpar «semcolon»
+	Factor : •ex Cte «semcolon»
+	Factor : •Cte «semcolon»
+	Cte : •id «term»
+	Cte : •int «term»
+	Cte : •string «term»
+	Cte : •float «term»
+	Cte : •id «ex»
+	Cte : •int «ex»
+	Cte : •string «ex»
+	Cte : •float «ex»
+	Cte : •id «less»
+	Cte : •int «less»
+	Cte : •string «less»
+	Cte : •float «less»
+	Cte : •id «greater»
+	Cte : •int «greater»
+	Cte : •string «greater»
+	Cte : •float «greater»
+	Cte : •id «diff»
+	Cte : •int «diff»
+	Cte : •string «diff»
+	Cte : •float «diff»
+	Cte : •id «semcolon»
+	Cte : •int «semcolon»
+	Cte : •string «semcolon»
+	Cte : •float «semcolon»
+}
+Transitions:
+	id -> 34
+	leftpar -> 37
+	Termino -> 38
+	ex -> 39
+	Factor -> 40
+	Cte -> 41
+	string -> 42
+	int -> 43
+	float -> 44
+	Exp -> 116
+
+
+S76{
+	Factor : ex Cte• «term»
+	Factor : ex Cte• «ex»
+	Factor : ex Cte• «less»
+	Factor : ex Cte• «greater»
+	Factor : ex Cte• «diff»
+	Factor : ex Cte• «semcolon»
+}
+Transitions:
+
+
+S77{
+	Termino : Factor Recterm• «ex»
+	Termino : Factor Recterm• «less»
+	Termino : Factor Recterm• «greater»
+	Termino : Factor Recterm• «diff»
+	Termino : Factor Recterm• «semcolon»
+}
+Transitions:
+
+
+S78{
+	Recterm : term •Termino «ex»
+	Recterm : term •Termino «less»
+	Recterm : term •Termino «greater»
+	Recterm : term •Termino «diff»
+	Recterm : term •Termino «semcolon»
+	Termino : •Factor Recterm «ex»
+	Termino : •Factor «ex»
+	Termino : •Factor Recterm «less»
+	Termino : •Factor «less»
+	Termino : •Factor Recterm «greater»
+	Termino : •Factor «greater»
+	Termino : •Factor Recterm «diff»
+	Termino : •Factor «diff»
+	Termino : •Factor Recterm «semcolon»
+	Termino : •Factor «semcolon»
+	Factor : •leftpar Expresion rightpar «term»
+	Factor : •ex Cte «term»
+	Factor : •Cte «term»
+	Factor : •leftpar Expresion rightpar «ex»
+	Factor : •ex Cte «ex»
+	Factor : •Cte «ex»
+	Factor : •leftpar Expresion rightpar «less»
+	Factor : •ex Cte «less»
+	Factor : •Cte «less»
+	Factor : •leftpar Expresion rightpar «greater»
+	Factor : •ex Cte «greater»
+	Factor : •Cte «greater»
+	Factor : •leftpar Expresion rightpar «diff»
+	Factor : •ex Cte «diff»
+	Factor : •Cte «diff»
+	Factor : •leftpar Expresion rightpar «semcolon»
+	Factor : •ex Cte «semcolon»
+	Factor : •Cte «semcolon»
+	Cte : •id «term»
+	Cte : •int «term»
+	Cte : •string «term»
+	Cte : •float «term»
+	Cte : •id «ex»
+	Cte : •int «ex»
+	Cte : •string «ex»
+	Cte : •float «ex»
+	Cte : •id «less»
+	Cte : •int «less»
+	Cte : •string «less»
+	Cte : •float «less»
+	Cte : •id «greater»
+	Cte : •int «greater»
+	Cte : •string «greater»
+	Cte : •float «greater»
+	Cte : •id «diff»
+	Cte : •int «diff»
+	Cte : •string «diff»
+	Cte : •float «diff»
+	Cte : •id «semcolon»
+	Cte : •int «semcolon»
+	Cte : •string «semcolon»
+	Cte : •float «semcolon»
+}
+Transitions:
+	id -> 34
+	leftpar -> 37
+	ex -> 39
+	Factor -> 40
+	Cte -> 41
+	string -> 42
+	int -> 43
+	float -> 44
+	Termino -> 117
+
+
+S79{
+	Condicion : if leftpar Expresion rightpar •then Bloque semcolon «id»
+	Condicion : if leftpar Expresion rightpar •then Bloque else Bloque semcolon «id»
+	Condicion : if leftpar Expresion rightpar •then Bloque semcolon «if»
+	Condicion : if leftpar Expresion rightpar •then Bloque else Bloque semcolon «if»
+	Condicion : if leftpar Expresion rightpar •then Bloque semcolon «print»
+	Condicion : if leftpar Expresion rightpar •then Bloque else Bloque semcolon «print»
+	Condicion : if leftpar Expresion rightpar •then Bloque semcolon «rightkey»
+	Condicion : if leftpar Expresion rightpar •then Bloque else Bloque semcolon «rightkey»
+}
+Transitions:
+	then -> 118
+
+
+S80{
+	Expresion : Exp less •Exp «rightpar»
+	Exp : •Termino Recexp «rightpar»
+	Exp : •Termino «rightpar»
+	Termino : •Factor Recterm «ex»
+	Termino : •Factor «ex»
+	Termino : •Factor Recterm «rightpar»
+	Termino : •Factor «rightpar»
+	Factor : •leftpar Expresion rightpar «term»
+	Factor : •ex Cte «term»
+	Factor : •Cte «term»
+	Factor : •leftpar Expresion rightpar «ex»
+	Factor : •ex Cte «ex»
+	Factor : •Cte «ex»
+	Factor : •leftpar Expresion rightpar «rightpar»
+	Factor : •ex Cte «rightpar»
+	Factor : •Cte «rightpar»
+	Cte : •id «term»
+	Cte : •int «term»
+	Cte : •string «term»
+	Cte : •float «term»
+	Cte : •id «ex»
+	Cte : •int «ex»
+	Cte : •string «ex»
+	Cte : •float «ex»
+	Cte : •id «rightpar»
+	Cte : •int «rightpar»
+	Cte : •string «rightpar»
+	Cte : •float «rightpar»
+}
+Transitions:
+	id -> 119
+	Exp -> 120
+	leftpar -> 121
+	Termino -> 122
+	ex -> 123
+	Factor -> 124
+	Cte -> 125
+	string -> 126
+	int -> 127
+	float -> 128
+
+
+S81{
+	Expresion : Exp greater •Exp «rightpar»
+	Exp : •Termino Recexp «rightpar»
+	Exp : •Termino «rightpar»
+	Termino : •Factor Recterm «ex»
+	Termino : •Factor «ex»
+	Termino : •Factor Recterm «rightpar»
+	Termino : •Factor «rightpar»
+	Factor : •leftpar Expresion rightpar «term»
+	Factor : •ex Cte «term»
+	Factor : •Cte «term»
+	Factor : •leftpar Expresion rightpar «ex»
+	Factor : •ex Cte «ex»
+	Factor : •Cte «ex»
+	Factor : •leftpar Expresion rightpar «rightpar»
+	Factor : •ex Cte «rightpar»
+	Factor : •Cte «rightpar»
+	Cte : •id «term»
+	Cte : •int «term»
+	Cte : •string «term»
+	Cte : •float «term»
+	Cte : •id «ex»
+	Cte : •int «ex»
+	Cte : •string «ex»
+	Cte : •float «ex»
+	Cte : •id «rightpar»
+	Cte : •int «rightpar»
+	Cte : •string «rightpar»
+	Cte : •float «rightpar»
+}
+Transitions:
+	id -> 119
+	leftpar -> 121
+	Termino -> 122
+	ex -> 123
+	Factor -> 124
+	Cte -> 125
+	string -> 126
+	int -> 127
+	float -> 128
+	Exp -> 129
+
+
+S82{
+	Expresion : Exp diff •Exp «rightpar»
+	Exp : •Termino Recexp «rightpar»
+	Exp : •Termino «rightpar»
+	Termino : •Factor Recterm «ex»
+	Termino : •Factor «ex»
+	Termino : •Factor Recterm «rightpar»
+	Termino : •Factor «rightpar»
+	Factor : •leftpar Expresion rightpar «term»
+	Factor : •ex Cte «term»
+	Factor : •Cte «term»
+	Factor : •leftpar Expresion rightpar «ex»
+	Factor : •ex Cte «ex»
+	Factor : •Cte «ex»
+	Factor : •leftpar Expresion rightpar «rightpar»
+	Factor : •ex Cte «rightpar»
+	Factor : •Cte «rightpar»
+	Cte : •id «term»
+	Cte : •int «term»
+	Cte : •string «term»
+	Cte : •float «term»
+	Cte : •id «ex»
+	Cte : •int «ex»
+	Cte : •string «ex»
+	Cte : •float «ex»
+	Cte : •id «rightpar»
+	Cte : •int «rightpar»
+	Cte : •string «rightpar»
+	Cte : •float «rightpar»
+}
+Transitions:
+	id -> 119
+	leftpar -> 121
+	Termino -> 122
+	ex -> 123
+	Factor -> 124
+	Cte -> 125
+	string -> 126
+	int -> 127
+	float -> 128
+	Exp -> 130
+
+
+S83{
+	Factor : leftpar Expresion •rightpar «term»
+	Factor : leftpar Expresion •rightpar «ex»
+	Factor : leftpar Expresion •rightpar «less»
+	Factor : leftpar Expresion •rightpar «greater»
+	Factor : leftpar Expresion •rightpar «diff»
+	Factor : leftpar Expresion •rightpar «rightpar»
+}
+Transitions:
+	rightpar -> 131
+
+
+S84{
+	Exp : Termino Recexp• «less»
+	Exp : Termino Recexp• «greater»
+	Exp : Termino Recexp• «diff»
+	Exp : Termino Recexp• «rightpar»
+}
+Transitions:
+
+
+S85{
+	Recexp : ex •Exp «less»
+	Recexp : ex •Exp «greater»
+	Recexp : ex •Exp «diff»
+	Recexp : ex •Exp «rightpar»
+	Exp : •Termino Recexp «less»
+	Exp : •Termino «less»
+	Exp : •Termino Recexp «greater»
+	Exp : •Termino «greater»
+	Exp : •Termino Recexp «diff»
+	Exp : •Termino «diff»
+	Exp : •Termino Recexp «rightpar»
+	Exp : •Termino «rightpar»
+	Termino : •Factor Recterm «ex»
+	Termino : •Factor «ex»
+	Termino : •Factor Recterm «less»
+	Termino : •Factor «less»
+	Termino : •Factor Recterm «greater»
+	Termino : •Factor «greater»
+	Termino : •Factor Recterm «diff»
+	Termino : •Factor «diff»
+	Termino : •Factor Recterm «rightpar»
+	Termino : •Factor «rightpar»
+	Factor : •leftpar Expresion rightpar «term»
+	Factor : •ex Cte «term»
+	Factor : •Cte «term»
+	Factor : •leftpar Expresion rightpar «ex»
+	Factor : •ex Cte «ex»
+	Factor : •Cte «ex»
+	Factor : •leftpar Expresion rightpar «less»
+	Factor : •ex Cte «less»
+	Factor : •Cte «less»
+	Factor : •leftpar Expresion rightpar «greater»
+	Factor : •ex Cte «greater»
+	Factor : •Cte «greater»
+	Factor : •leftpar Expresion rightpar «diff»
+	Factor : •ex Cte «diff»
+	Factor : •Cte «diff»
+	Factor : •leftpar Expresion rightpar «rightpar»
+	Factor : •ex Cte «rightpar»
+	Factor : •Cte «rightpar»
+	Cte : •id «term»
+	Cte : •int «term»
+	Cte : •string «term»
+	Cte : •float «term»
+	Cte : •id «ex»
+	Cte : •int «ex»
+	Cte : •string «ex»
+	Cte : •float «ex»
+	Cte : •id «less»
+	Cte : •int «less»
+	Cte : •string «less»
+	Cte : •float «less»
+	Cte : •id «greater»
+	Cte : •int «greater»
+	Cte : •string «greater»
+	Cte : •float «greater»
+	Cte : •id «diff»
+	Cte : •int «diff»
+	Cte : •string «diff»
+	Cte : •float «diff»
+	Cte : •id «rightpar»
+	Cte : •int «rightpar»
+	Cte : •string «rightpar»
+	Cte : •float «rightpar»
+}
+Transitions:
+	id -> 45
+	leftpar -> 48
+	Termino -> 49
+	ex -> 50
+	Factor -> 51
+	Cte -> 52
+	string -> 53
+	int -> 54
+	float -> 55
+	Exp -> 132
+
+
+S86{
+	Factor : ex Cte• «term»
+	Factor : ex Cte• «ex»
+	Factor : ex Cte• «less»
+	Factor : ex Cte• «greater»
+	Factor : ex Cte• «diff»
+	Factor : ex Cte• «rightpar»
+}
+Transitions:
+
+
+S87{
+	Termino : Factor Recterm• «ex»
+	Termino : Factor Recterm• «less»
+	Termino : Factor Recterm• «greater»
+	Termino : Factor Recterm• «diff»
+	Termino : Factor Recterm• «rightpar»
+}
+Transitions:
+
+
+S88{
+	Recterm : term •Termino «ex»
+	Recterm : term •Termino «less»
+	Recterm : term •Termino «greater»
+	Recterm : term •Termino «diff»
+	Recterm : term •Termino «rightpar»
+	Termino : •Factor Recterm «ex»
+	Termino : •Factor «ex»
+	Termino : •Factor Recterm «less»
+	Termino : •Factor «less»
+	Termino : •Factor Recterm «greater»
+	Termino : •Factor «greater»
+	Termino : •Factor Recterm «diff»
+	Termino : •Factor «diff»
+	Termino : •Factor Recterm «rightpar»
+	Termino : •Factor «rightpar»
+	Factor : •leftpar Expresion rightpar «term»
+	Factor : •ex Cte «term»
+	Factor : •Cte «term»
+	Factor : •leftpar Expresion rightpar «ex»
+	Factor : •ex Cte «ex»
+	Factor : •Cte «ex»
+	Factor : •leftpar Expresion rightpar «less»
+	Factor : •ex Cte «less»
+	Factor : •Cte «less»
+	Factor : •leftpar Expresion rightpar «greater»
+	Factor : •ex Cte «greater»
+	Factor : •Cte «greater»
+	Factor : •leftpar Expresion rightpar «diff»
+	Factor : •ex Cte «diff»
+	Factor : •Cte «diff»
+	Factor : •leftpar Expresion rightpar «rightpar»
+	Factor : •ex Cte «rightpar»
+	Factor : •Cte «rightpar»
+	Cte : •id «term»
+	Cte : •int «term»
+	Cte : •string «term»
+	Cte : •float «term»
+	Cte : •id «ex»
+	Cte : •int «ex»
+	Cte : •string «ex»
+	Cte : •float «ex»
+	Cte : •id «less»
+	Cte : •int «less»
+	Cte : •string «less»
+	Cte : •float «less»
+	Cte : •id «greater»
+	Cte : •int «greater»
+	Cte : •string «greater»
+	Cte : •float «greater»
+	Cte : •id «diff»
+	Cte : •int «diff»
+	Cte : •string «diff»
+	Cte : •float «diff»
+	Cte : •id «rightpar»
+	Cte : •int «rightpar»
+	Cte : •string «rightpar»
+	Cte : •float «rightpar»
+}
+Transitions:
+	id -> 45
+	leftpar -> 48
+	ex -> 50
+	Factor -> 51
+	Cte -> 52
+	string -> 53
+	int -> 54
+	float -> 55
+	Termino -> 133
+
+
+S89{
+	Recesc : Expresion comma •Recesc «rightpar»
+	Recesc : •Expresion comma Recesc «rightpar»
+	Recesc : •string comma Recesc «rightpar»
+	Recesc : •Expresion «rightpar»
+	Recesc : •string «rightpar»
+	Expresion : •Exp less Exp «comma»
+	Expresion : •Exp greater Exp «comma»
+	Expresion : •Exp diff Exp «comma»
+	Expresion : •Exp «comma»
+	Expresion : •Exp less Exp «rightpar»
+	Expresion : •Exp greater Exp «rightpar»
+	Expresion : •Exp diff Exp «rightpar»
+	Expresion : •Exp «rightpar»
+	Exp : •Termino Recexp «less»
+	Exp : •Termino «less»
+	Exp : •Termino Recexp «greater»
+	Exp : •Termino «greater»
+	Exp : •Termino Recexp «diff»
+	Exp : •Termino «diff»
+	Exp : •Termino Recexp «comma»
+	Exp : •Termino «comma»
+	Exp : •Termino Recexp «rightpar»
+	Exp : •Termino «rightpar»
+	Termino : •Factor Recterm «ex»
+	Termino : •Factor «ex»
+	Termino : •Factor Recterm «less»
+	Termino : •Factor «less»
+	Termino : •Factor Recterm «greater»
+	Termino : •Factor «greater»
+	Termino : •Factor Recterm «diff»
+	Termino : •Factor «diff»
+	Termino : •Factor Recterm «comma»
+	Termino : •Factor «comma»
+	Termino : •Factor Recterm «rightpar»
+	Termino : •Factor «rightpar»
+	Factor : •leftpar Expresion rightpar «term»
+	Factor : •ex Cte «term»
+	Factor : •Cte «term»
+	Factor : •leftpar Expresion rightpar «ex»
+	Factor : •ex Cte «ex»
+	Factor : •Cte «ex»
+	Factor : •leftpar Expresion rightpar «less»
+	Factor : •ex Cte «less»
+	Factor : •Cte «less»
+	Factor : •leftpar Expresion rightpar «greater»
+	Factor : •ex Cte «greater»
+	Factor : •Cte «greater»
+	Factor : •leftpar Expresion rightpar «diff»
+	Factor : •ex Cte «diff»
+	Factor : •Cte «diff»
+	Factor : •leftpar Expresion rightpar «comma»
+	Factor : •ex Cte «comma»
+	Factor : •Cte «comma»
+	Factor : •leftpar Expresion rightpar «rightpar»
+	Factor : •ex Cte «rightpar»
+	Factor : •Cte «rightpar»
+	Cte : •id «term»
+	Cte : •int «term»
+	Cte : •string «term»
+	Cte : •float «term»
+	Cte : •id «ex»
+	Cte : •int «ex»
+	Cte : •string «ex»
+	Cte : •float «ex»
+	Cte : •id «less»
+	Cte : •int «less»
+	Cte : •string «less»
+	Cte : •float «less»
+	Cte : •id «greater»
+	Cte : •int «greater»
+	Cte : •string «greater»
+	Cte : •float «greater»
+	Cte : •id «diff»
+	Cte : •int «diff»
+	Cte : •string «diff»
+	Cte : •float «diff»
+	Cte : •id «comma»
+	Cte : •int «comma»
+	Cte : •string «comma»
+	Cte : •float «comma»
+	Cte : •id «rightpar»
+	Cte : •int «rightpar»
+	Cte : •string «rightpar»
+	Cte : •float «rightpar»
+}
+Transitions:
+	id -> 56
+	Expresion -> 57
+	Exp -> 58
+	leftpar -> 59
+	Termino -> 60
+	ex -> 61
+	Factor -> 62
+	Cte -> 63
+	string -> 65
+	int -> 66
+	float -> 67
+	Recesc -> 134
+
+
+S90{
+	Expresion : Exp less •Exp «comma»
+	Expresion : Exp less •Exp «rightpar»
+	Exp : •Termino Recexp «comma»
+	Exp : •Termino «comma»
+	Exp : •Termino Recexp «rightpar»
+	Exp : •Termino «rightpar»
+	Termino : •Factor Recterm «ex»
+	Termino : •Factor «ex»
+	Termino : •Factor Recterm «comma»
+	Termino : •Factor «comma»
+	Termino : •Factor Recterm «rightpar»
+	Termino : •Factor «rightpar»
+	Factor : •leftpar Expresion rightpar «term»
+	Factor : •ex Cte «term»
+	Factor : •Cte «term»
+	Factor : •leftpar Expresion rightpar «ex»
+	Factor : •ex Cte «ex»
+	Factor : •Cte «ex»
+	Factor : •leftpar Expresion rightpar «comma»
+	Factor : •ex Cte «comma»
+	Factor : •Cte «comma»
+	Factor : •leftpar Expresion rightpar «rightpar»
+	Factor : •ex Cte «rightpar»
+	Factor : •Cte «rightpar»
+	Cte : •id «term»
+	Cte : •int «term»
+	Cte : •string «term»
+	Cte : •float «term»
+	Cte : •id «ex»
+	Cte : •int «ex»
+	Cte : •string «ex»
+	Cte : •float «ex»
+	Cte : •id «comma»
+	Cte : •int «comma»
+	Cte : •string «comma»
+	Cte : •float «comma»
+	Cte : •id «rightpar»
+	Cte : •int «rightpar»
+	Cte : •string «rightpar»
+	Cte : •float «rightpar»
+}
+Transitions:
+	id -> 135
+	Exp -> 136
+	leftpar -> 137
+	Termino -> 138
+	ex -> 139
+	Factor -> 140
+	Cte -> 141
+	string -> 142
+	int -> 143
+	float -> 144
+
+
+S91{
+	Expresion : Exp greater •Exp «comma»
+	Expresion : Exp greater •Exp «rightpar»
+	Exp : •Termino Recexp «comma»
+	Exp : •Termino «comma»
+	Exp : •Termino Recexp «rightpar»
+	Exp : •Termino «rightpar»
+	Termino : •Factor Recterm «ex»
+	Termino : •Factor «ex»
+	Termino : •Factor Recterm «comma»
+	Termino : •Factor «comma»
+	Termino : •Factor Recterm «rightpar»
+	Termino : •Factor «rightpar»
+	Factor : •leftpar Expresion rightpar «term»
+	Factor : •ex Cte «term»
+	Factor : •Cte «term»
+	Factor : •leftpar Expresion rightpar «ex»
+	Factor : •ex Cte «ex»
+	Factor : •Cte «ex»
+	Factor : •leftpar Expresion rightpar «comma»
+	Factor : •ex Cte «comma»
+	Factor : •Cte «comma»
+	Factor : •leftpar Expresion rightpar «rightpar»
+	Factor : •ex Cte «rightpar»
+	Factor : •Cte «rightpar»
+	Cte : •id «term»
+	Cte : •int «term»
+	Cte : •string «term»
+	Cte : •float «term»
+	Cte : •id «ex»
+	Cte : •int «ex»
+	Cte : •string «ex»
+	Cte : •float «ex»
+	Cte : •id «comma»
+	Cte : •int «comma»
+	Cte : •string «comma»
+	Cte : •float «comma»
+	Cte : •id «rightpar»
+	Cte : •int «rightpar»
+	Cte : •string «rightpar»
+	Cte : •float «rightpar»
+}
+Transitions:
+	id -> 135
+	leftpar -> 137
+	Termino -> 138
+	ex -> 139
+	Factor -> 140
+	Cte -> 141
+	string -> 142
+	int -> 143
+	float -> 144
+	Exp -> 145
+
+
+S92{
+	Expresion : Exp diff •Exp «comma»
+	Expresion : Exp diff •Exp «rightpar»
+	Exp : •Termino Recexp «comma»
+	Exp : •Termino «comma»
+	Exp : •Termino Recexp «rightpar»
+	Exp : •Termino «rightpar»
+	Termino : •Factor Recterm «ex»
+	Termino : •Factor «ex»
+	Termino : •Factor Recterm «comma»
+	Termino : •Factor «comma»
+	Termino : •Factor Recterm «rightpar»
+	Termino : •Factor «rightpar»
+	Factor : •leftpar Expresion rightpar «term»
+	Factor : •ex Cte «term»
+	Factor : •Cte «term»
+	Factor : •leftpar Expresion rightpar «ex»
+	Factor : •ex Cte «ex»
+	Factor : •Cte «ex»
+	Factor : •leftpar Expresion rightpar «comma»
+	Factor : •ex Cte «comma»
+	Factor : •Cte «comma»
+	Factor : •leftpar Expresion rightpar «rightpar»
+	Factor : •ex Cte «rightpar»
+	Factor : •Cte «rightpar»
+	Cte : •id «term»
+	Cte : •int «term»
+	Cte : •string «term»
+	Cte : •float «term»
+	Cte : •id «ex»
+	Cte : •int «ex»
+	Cte : •string «ex»
+	Cte : •float «ex»
+	Cte : •id «comma»
+	Cte : •int «comma»
+	Cte : •string «comma»
+	Cte : •float «comma»
+	Cte : •id «rightpar»
+	Cte : •int «rightpar»
+	Cte : •string «rightpar»
+	Cte : •float «rightpar»
+}
+Transitions:
+	id -> 135
+	leftpar -> 137
+	Termino -> 138
+	ex -> 139
+	Factor -> 140
+	Cte -> 141
+	string -> 142
+	int -> 143
+	float -> 144
+	Exp -> 146
+
+
+S93{
+	Factor : leftpar Expresion •rightpar «term»
+	Factor : leftpar Expresion •rightpar «ex»
+	Factor : leftpar Expresion •rightpar «less»
+	Factor : leftpar Expresion •rightpar «greater»
+	Factor : leftpar Expresion •rightpar «diff»
+	Factor : leftpar Expresion •rightpar «comma»
+	Factor : leftpar Expresion •rightpar «rightpar»
+}
+Transitions:
+	rightpar -> 147
+
+
+S94{
+	Exp : Termino Recexp• «less»
+	Exp : Termino Recexp• «greater»
+	Exp : Termino Recexp• «diff»
+	Exp : Termino Recexp• «comma»
+	Exp : Termino Recexp• «rightpar»
+}
+Transitions:
+
+
+S95{
+	Recexp : ex •Exp «less»
+	Recexp : ex •Exp «greater»
+	Recexp : ex •Exp «diff»
+	Recexp : ex •Exp «comma»
+	Recexp : ex •Exp «rightpar»
+	Exp : •Termino Recexp «less»
+	Exp : •Termino «less»
+	Exp : •Termino Recexp «greater»
+	Exp : •Termino «greater»
+	Exp : •Termino Recexp «diff»
+	Exp : •Termino «diff»
+	Exp : •Termino Recexp «comma»
+	Exp : •Termino «comma»
+	Exp : •Termino Recexp «rightpar»
+	Exp : •Termino «rightpar»
+	Termino : •Factor Recterm «ex»
+	Termino : •Factor «ex»
+	Termino : •Factor Recterm «less»
+	Termino : •Factor «less»
+	Termino : •Factor Recterm «greater»
+	Termino : •Factor «greater»
+	Termino : •Factor Recterm «diff»
+	Termino : •Factor «diff»
+	Termino : •Factor Recterm «comma»
+	Termino : •Factor «comma»
+	Termino : •Factor Recterm «rightpar»
+	Termino : •Factor «rightpar»
+	Factor : •leftpar Expresion rightpar «term»
+	Factor : •ex Cte «term»
+	Factor : •Cte «term»
+	Factor : •leftpar Expresion rightpar «ex»
+	Factor : •ex Cte «ex»
+	Factor : •Cte «ex»
+	Factor : •leftpar Expresion rightpar «less»
+	Factor : •ex Cte «less»
+	Factor : •Cte «less»
+	Factor : •leftpar Expresion rightpar «greater»
+	Factor : •ex Cte «greater»
+	Factor : •Cte «greater»
+	Factor : •leftpar Expresion rightpar «diff»
+	Factor : •ex Cte «diff»
+	Factor : •Cte «diff»
+	Factor : •leftpar Expresion rightpar «comma»
+	Factor : •ex Cte «comma»
+	Factor : •Cte «comma»
+	Factor : •leftpar Expresion rightpar «rightpar»
+	Factor : •ex Cte «rightpar»
+	Factor : •Cte «rightpar»
+	Cte : •id «term»
+	Cte : •int «term»
+	Cte : •string «term»
+	Cte : •float «term»
+	Cte : •id «ex»
+	Cte : •int «ex»
+	Cte : •string «ex»
+	Cte : •float «ex»
+	Cte : •id «less»
+	Cte : •int «less»
+	Cte : •string «less»
+	Cte : •float «less»
+	Cte : •id «greater»
+	Cte : •int «greater»
+	Cte : •string «greater»
+	Cte : •float «greater»
+	Cte : •id «diff»
+	Cte : •int «diff»
+	Cte : •string «diff»
+	Cte : •float «diff»
+	Cte : •id «comma»
+	Cte : •int «comma»
+	Cte : •string «comma»
+	Cte : •float «comma»
+	Cte : •id «rightpar»
+	Cte : •int «rightpar»
+	Cte : •string «rightpar»
+	Cte : •float «rightpar»
+}
+Transitions:
+	id -> 56
+	leftpar -> 59
+	Termino -> 60
+	ex -> 61
+	Factor -> 62
+	Cte -> 63
+	int -> 66
+	float -> 67
+	string -> 97
+	Exp -> 148
+
+
+S96{
+	Factor : ex Cte• «term»
+	Factor : ex Cte• «ex»
+	Factor : ex Cte• «less»
+	Factor : ex Cte• «greater»
+	Factor : ex Cte• «diff»
+	Factor : ex Cte• «comma»
+	Factor : ex Cte• «rightpar»
+}
+Transitions:
+
+
+S97{
+	Cte : string• «term»
+	Cte : string• «ex»
+	Cte : string• «less»
+	Cte : string• «greater»
+	Cte : string• «diff»
+	Cte : string• «comma»
+	Cte : string• «rightpar»
+}
+Transitions:
+
+
+S98{
+	Termino : Factor Recterm• «ex»
+	Termino : Factor Recterm• «less»
+	Termino : Factor Recterm• «greater»
+	Termino : Factor Recterm• «diff»
+	Termino : Factor Recterm• «comma»
+	Termino : Factor Recterm• «rightpar»
+}
+Transitions:
+
+
+S99{
+	Recterm : term •Termino «ex»
+	Recterm : term •Termino «less»
+	Recterm : term •Termino «greater»
+	Recterm : term •Termino «diff»
+	Recterm : term •Termino «comma»
+	Recterm : term •Termino «rightpar»
+	Termino : •Factor Recterm «ex»
+	Termino : •Factor «ex»
+	Termino : •Factor Recterm «less»
+	Termino : •Factor «less»
+	Termino : •Factor Recterm «greater»
+	Termino : •Factor «greater»
+	Termino : •Factor Recterm «diff»
+	Termino : •Factor «diff»
+	Termino : •Factor Recterm «comma»
+	Termino : •Factor «comma»
+	Termino : •Factor Recterm «rightpar»
+	Termino : •Factor «rightpar»
+	Factor : •leftpar Expresion rightpar «term»
+	Factor : •ex Cte «term»
+	Factor : •Cte «term»
+	Factor : •leftpar Expresion rightpar «ex»
+	Factor : •ex Cte «ex»
+	Factor : •Cte «ex»
+	Factor : •leftpar Expresion rightpar «less»
+	Factor : •ex Cte «less»
+	Factor : •Cte «less»
+	Factor : •leftpar Expresion rightpar «greater»
+	Factor : •ex Cte «greater»
+	Factor : •Cte «greater»
+	Factor : •leftpar Expresion rightpar «diff»
+	Factor : •ex Cte «diff»
+	Factor : •Cte «diff»
+	Factor : •leftpar Expresion rightpar «comma»
+	Factor : •ex Cte «comma»
+	Factor : •Cte «comma»
+	Factor : •leftpar Expresion rightpar «rightpar»
+	Factor : •ex Cte «rightpar»
+	Factor : •Cte «rightpar»
+	Cte : •id «term»
+	Cte : •int «term»
+	Cte : •string «term»
+	Cte : •float «term»
+	Cte : •id «ex»
+	Cte : •int «ex»
+	Cte : •string «ex»
+	Cte : •float «ex»
+	Cte : •id «less»
+	Cte : •int «less»
+	Cte : •string «less»
+	Cte : •float «less»
+	Cte : •id «greater»
+	Cte : •int «greater»
+	Cte : •string «greater»
+	Cte : •float «greater»
+	Cte : •id «diff»
+	Cte : •int «diff»
+	Cte : •string «diff»
+	Cte : •float «diff»
+	Cte : •id «comma»
+	Cte : •int «comma»
+	Cte : •string «comma»
+	Cte : •float «comma»
+	Cte : •id «rightpar»
+	Cte : •int «rightpar»
+	Cte : •string «rightpar»
+	Cte : •float «rightpar»
+}
+Transitions:
+	id -> 56
+	leftpar -> 59
+	ex -> 61
+	Factor -> 62
+	Cte -> 63
+	int -> 66
+	float -> 67
+	string -> 97
+	Termino -> 149
+
+
+S100{
+	Escritura : print leftpar Recesc rightpar •semcolon «id»
+	Escritura : print leftpar Recesc rightpar •semcolon «if»
+	Escritura : print leftpar Recesc rightpar •semcolon «print»
+	Escritura : print leftpar Recesc rightpar •semcolon «rightkey»
+}
+Transitions:
+	semcolon -> 150
+
+
+S101{
+	Recesc : string comma •Recesc «rightpar»
+	Recesc : •Expresion comma Recesc «rightpar»
+	Recesc : •string comma Recesc «rightpar»
+	Recesc : •Expresion «rightpar»
+	Recesc : •string «rightpar»
+	Expresion : •Exp less Exp «comma»
+	Expresion : •Exp greater Exp «comma»
+	Expresion : •Exp diff Exp «comma»
+	Expresion : •Exp «comma»
+	Expresion : •Exp less Exp «rightpar»
+	Expresion : •Exp greater Exp «rightpar»
+	Expresion : •Exp diff Exp «rightpar»
+	Expresion : •Exp «rightpar»
+	Exp : •Termino Recexp «less»
+	Exp : •Termino «less»
+	Exp : •Termino Recexp «greater»
+	Exp : •Termino «greater»
+	Exp : •Termino Recexp «diff»
+	Exp : •Termino «diff»
+	Exp : •Termino Recexp «comma»
+	Exp : •Termino «comma»
+	Exp : •Termino Recexp «rightpar»
+	Exp : •Termino «rightpar»
+	Termino : •Factor Recterm «ex»
+	Termino : •Factor «ex»
+	Termino : •Factor Recterm «less»
+	Termino : •Factor «less»
+	Termino : •Factor Recterm «greater»
+	Termino : •Factor «greater»
+	Termino : •Factor Recterm «diff»
+	Termino : •Factor «diff»
+	Termino : •Factor Recterm «comma»
+	Termino : •Factor «comma»
+	Termino : •Factor Recterm «rightpar»
+	Termino : •Factor «rightpar»
+	Factor : •leftpar Expresion rightpar «term»
+	Factor : •ex Cte «term»
+	Factor : •Cte «term»
+	Factor : •leftpar Expresion rightpar «ex»
+	Factor : •ex Cte «ex»
+	Factor : •Cte «ex»
+	Factor : •leftpar Expresion rightpar «less»
+	Factor : •ex Cte «less»
+	Factor : •Cte «less»
+	Factor : •leftpar Expresion rightpar «greater»
+	Factor : •ex Cte «greater»
+	Factor : •Cte «greater»
+	Factor : •leftpar Expresion rightpar «diff»
+	Factor : •ex Cte «diff»
+	Factor : •Cte «diff»
+	Factor : •leftpar Expresion rightpar «comma»
+	Factor : •ex Cte «comma»
+	Factor : •Cte «comma»
+	Factor : •leftpar Expresion rightpar «rightpar»
+	Factor : •ex Cte «rightpar»
+	Factor : •Cte «rightpar»
+	Cte : •id «term»
+	Cte : •int «term»
+	Cte : •string «term»
+	Cte : •float «term»
+	Cte : •id «ex»
+	Cte : •int «ex»
+	Cte : •string «ex»
+	Cte : •float «ex»
+	Cte : •id «less»
+	Cte : •int «less»
+	Cte : •string «less»
+	Cte : •float «less»
+	Cte : •id «greater»
+	Cte : •int «greater»
+	Cte : •string «greater»
+	Cte : •float «greater»
+	Cte : •id «diff»
+	Cte : •int «diff»
+	Cte : •string «diff»
+	Cte : •float «diff»
+	Cte : •id «comma»
+	Cte : •int «comma»
+	Cte : •string «comma»
+	Cte : •float «comma»
+	Cte : •id «rightpar»
+	Cte : •int «rightpar»
+	Cte : •string «rightpar»
+	Cte : •float «rightpar»
+}
+Transitions:
+	id -> 56
+	Expresion -> 57
+	Exp -> 58
+	leftpar -> 59
+	Termino -> 60
+	ex -> 61
+	Factor -> 62
+	Cte -> 63
+	string -> 65
+	int -> 66
+	float -> 67
+	Recesc -> 151
+
+
+S102{
+	Recvars : Recids colon Tipo semcolon Recvars• «leftkey»
+}
+Transitions:
+
+
+S103{
+	Cte : id• «term»
+	Cte : id• «ex»
+	Cte : id• «semcolon»
+}
+Transitions:
+
+
+S104{
+	Expresion : Exp less Exp• «semcolon»
+}
+Transitions:
+
+
+S105{
+	Factor : leftpar •Expresion rightpar «term»
+	Factor : leftpar •Expresion rightpar «ex»
+	Factor : leftpar •Expresion rightpar «semcolon»
+	Expresion : •Exp less Exp «rightpar»
+	Expresion : •Exp greater Exp «rightpar»
+	Expresion : •Exp diff Exp «rightpar»
+	Expresion : •Exp «rightpar»
+	Exp : •Termino Recexp «less»
+	Exp : •Termino «less»
+	Exp : •Termino Recexp «greater»
+	Exp : •Termino «greater»
+	Exp : •Termino Recexp «diff»
+	Exp : •Termino «diff»
+	Exp : •Termino Recexp «rightpar»
+	Exp : •Termino «rightpar»
+	Termino : •Factor Recterm «ex»
+	Termino : •Factor «ex»
+	Termino : •Factor Recterm «less»
+	Termino : •Factor «less»
+	Termino : •Factor Recterm «greater»
+	Termino : •Factor «greater»
+	Termino : •Factor Recterm «diff»
+	Termino : •Factor «diff»
+	Termino : •Factor Recterm «rightpar»
+	Termino : •Factor «rightpar»
+	Factor : •leftpar Expresion rightpar «term»
+	Factor : •ex Cte «term»
+	Factor : •Cte «term»
+	Factor : •leftpar Expresion rightpar «ex»
+	Factor : •ex Cte «ex»
+	Factor : •Cte «ex»
+	Factor : •leftpar Expresion rightpar «less»
+	Factor : •ex Cte «less»
+	Factor : •Cte «less»
+	Factor : •leftpar Expresion rightpar «greater»
+	Factor : •ex Cte «greater»
+	Factor : •Cte «greater»
+	Factor : •leftpar Expresion rightpar «diff»
+	Factor : •ex Cte «diff»
+	Factor : •Cte «diff»
+	Factor : •leftpar Expresion rightpar «rightpar»
+	Factor : •ex Cte «rightpar»
+	Factor : •Cte «rightpar»
+	Cte : •id «term»
+	Cte : •int «term»
+	Cte : •string «term»
+	Cte : •float «term»
+	Cte : •id «ex»
+	Cte : •int «ex»
+	Cte : •string «ex»
+	Cte : •float «ex»
+	Cte : •id «less»
+	Cte : •int «less»
+	Cte : •string «less»
+	Cte : •float «less»
+	Cte : •id «greater»
+	Cte : •int «greater»
+	Cte : •string «greater»
+	Cte : •float «greater»
+	Cte : •id «diff»
+	Cte : •int «diff»
+	Cte : •string «diff»
+	Cte : •float «diff»
+	Cte : •id «rightpar»
+	Cte : •int «rightpar»
+	Cte : •string «rightpar»
+	Cte : •float «rightpar»
+}
+Transitions:
+	id -> 45
+	Exp -> 47
+	leftpar -> 48
+	Termino -> 49
+	ex -> 50
+	Factor -> 51
+	Cte -> 52
+	string -> 53
+	int -> 54
+	float -> 55
+	Expresion -> 152
+
+
+S106{
+	Exp : Termino •Recexp «semcolon»
+	Exp : Termino• «semcolon»
+	Recexp : •ex Exp «semcolon»
+}
+Transitions:
+	Recexp -> 153
+	ex -> 154
+
+
+S107{
+	Factor : ex •Cte «term»
+	Factor : ex •Cte «ex»
+	Factor : ex •Cte «semcolon»
+	Cte : •id «term»
+	Cte : •int «term»
+	Cte : •string «term»
+	Cte : •float «term»
+	Cte : •id «ex»
+	Cte : •int «ex»
+	Cte : •string «ex»
+	Cte : •float «ex»
+	Cte : •id «semcolon»
+	Cte : •int «semcolon»
+	Cte : •string «semcolon»
+	Cte : •float «semcolon»
+}
+Transitions:
+	id -> 103
+	string -> 110
+	int -> 111
+	float -> 112
+	Cte -> 155
+
+
+S108{
+	Termino : Factor •Recterm «ex»
+	Termino : Factor• «ex»
+	Termino : Factor •Recterm «semcolon»
+	Termino : Factor• «semcolon»
+	Recterm : •term Termino «ex»
+	Recterm : •term Termino «semcolon»
+}
+Transitions:
+	Recterm -> 156
+	term -> 157
+
+
+S109{
+	Factor : Cte• «term»
+	Factor : Cte• «ex»
+	Factor : Cte• «semcolon»
+}
+Transitions:
+
+
+S110{
+	Cte : string• «term»
+	Cte : string• «ex»
+	Cte : string• «semcolon»
+}
+Transitions:
+
+
+S111{
+	Cte : int• «term»
+	Cte : int• «ex»
+	Cte : int• «semcolon»
+}
+Transitions:
+
+
+S112{
+	Cte : float• «term»
+	Cte : float• «ex»
+	Cte : float• «semcolon»
+}
+Transitions:
+
+
+S113{
+	Expresion : Exp greater Exp• «semcolon»
+}
+Transitions:
+
+
+S114{
+	Expresion : Exp diff Exp• «semcolon»
+}
+Transitions:
+
+
+S115{
+	Factor : leftpar Expresion rightpar• «term»
+	Factor : leftpar Expresion rightpar• «ex»
+	Factor : leftpar Expresion rightpar• «less»
+	Factor : leftpar Expresion rightpar• «greater»
+	Factor : leftpar Expresion rightpar• «diff»
+	Factor : leftpar Expresion rightpar• «semcolon»
+}
+Transitions:
+
+
+S116{
+	Recexp : ex Exp• «less»
+	Recexp : ex Exp• «greater»
+	Recexp : ex Exp• «diff»
+	Recexp : ex Exp• «semcolon»
+}
+Transitions:
+
+
+S117{
+	Recterm : term Termino• «ex»
+	Recterm : term Termino• «less»
+	Recterm : term Termino• «greater»
+	Recterm : term Termino• «diff»
+	Recterm : term Termino• «semcolon»
+}
+Transitions:
+
+
+S118{
+	Condicion : if leftpar Expresion rightpar then •Bloque semcolon «id»
+	Condicion : if leftpar Expresion rightpar then •Bloque else Bloque semcolon «id»
+	Condicion : if leftpar Expresion rightpar then •Bloque semcolon «if»
+	Condicion : if leftpar Expresion rightpar then •Bloque else Bloque semcolon «if»
+	Condicion : if leftpar Expresion rightpar then •Bloque semcolon «print»
+	Condicion : if leftpar Expresion rightpar then •Bloque else Bloque semcolon «print»
+	Condicion : if leftpar Expresion rightpar then •Bloque semcolon «rightkey»
+	Condicion : if leftpar Expresion rightpar then •Bloque else Bloque semcolon «rightkey»
+	Bloque : •leftkey Estatutos rightkey «semcolon»
+	Bloque : •leftkey rightkey «semcolon»
+	Bloque : •leftkey Estatutos rightkey «else»
+	Bloque : •leftkey rightkey «else»
+}
+Transitions:
+	Bloque -> 158
+	leftkey -> 159
+
+
+S119{
+	Cte : id• «term»
+	Cte : id• «ex»
+	Cte : id• «rightpar»
+}
+Transitions:
+
+
+S120{
+	Expresion : Exp less Exp• «rightpar»
+}
+Transitions:
+
+
+S121{
+	Factor : leftpar •Expresion rightpar «term»
+	Factor : leftpar •Expresion rightpar «ex»
+	Factor : leftpar •Expresion rightpar «rightpar»
+	Expresion : •Exp less Exp «rightpar»
+	Expresion : •Exp greater Exp «rightpar»
+	Expresion : •Exp diff Exp «rightpar»
+	Expresion : •Exp «rightpar»
+	Exp : •Termino Recexp «less»
+	Exp : •Termino «less»
+	Exp : •Termino Recexp «greater»
+	Exp : •Termino «greater»
+	Exp : •Termino Recexp «diff»
+	Exp : •Termino «diff»
+	Exp : •Termino Recexp «rightpar»
+	Exp : •Termino «rightpar»
+	Termino : •Factor Recterm «ex»
+	Termino : •Factor «ex»
+	Termino : •Factor Recterm «less»
+	Termino : •Factor «less»
+	Termino : •Factor Recterm «greater»
+	Termino : •Factor «greater»
+	Termino : •Factor Recterm «diff»
+	Termino : •Factor «diff»
+	Termino : •Factor Recterm «rightpar»
+	Termino : •Factor «rightpar»
+	Factor : •leftpar Expresion rightpar «term»
+	Factor : •ex Cte «term»
+	Factor : •Cte «term»
+	Factor : •leftpar Expresion rightpar «ex»
+	Factor : •ex Cte «ex»
+	Factor : •Cte «ex»
+	Factor : •leftpar Expresion rightpar «less»
+	Factor : •ex Cte «less»
+	Factor : •Cte «less»
+	Factor : •leftpar Expresion rightpar «greater»
+	Factor : •ex Cte «greater»
+	Factor : •Cte «greater»
+	Factor : •leftpar Expresion rightpar «diff»
+	Factor : •ex Cte «diff»
+	Factor : •Cte «diff»
+	Factor : •leftpar Expresion rightpar «rightpar»
+	Factor : •ex Cte «rightpar»
+	Factor : •Cte «rightpar»
+	Cte : •id «term»
+	Cte : •int «term»
+	Cte : •string «term»
+	Cte : •float «term»
+	Cte : •id «ex»
+	Cte : •int «ex»
+	Cte : •string «ex»
+	Cte : •float «ex»
+	Cte : •id «less»
+	Cte : •int «less»
+	Cte : •string «less»
+	Cte : •float «less»
+	Cte : •id «greater»
+	Cte : •int «greater»
+	Cte : •string «greater»
+	Cte : •float «greater»
+	Cte : •id «diff»
+	Cte : •int «diff»
+	Cte : •string «diff»
+	Cte : •float «diff»
+	Cte : •id «rightpar»
+	Cte : •int «rightpar»
+	Cte : •string «rightpar»
+	Cte : •float «rightpar»
+}
+Transitions:
+	id -> 45
+	Exp -> 47
+	leftpar -> 48
+	Termino -> 49
+	ex -> 50
+	Factor -> 51
+	Cte -> 52
+	string -> 53
+	int -> 54
+	float -> 55
+	Expresion -> 160
+
+
+S122{
+	Exp : Termino •Recexp «rightpar»
+	Exp : Termino• «rightpar»
+	Recexp : •ex Exp «rightpar»
+}
+Transitions:
+	Recexp -> 161
+	ex -> 162
+
+
+S123{
+	Factor : ex •Cte «term»
+	Factor : ex •Cte «ex»
+	Factor : ex •Cte «rightpar»
+	Cte : •id «term»
+	Cte : •int «term»
+	Cte : •string «term»
+	Cte : •float «term»
+	Cte : •id «ex»
+	Cte : •int «ex»
+	Cte : •string «ex»
+	Cte : •float «ex»
+	Cte : •id «rightpar»
+	Cte : •int «rightpar»
+	Cte : •string «rightpar»
+	Cte : •float «rightpar»
+}
+Transitions:
+	id -> 119
+	string -> 126
+	int -> 127
+	float -> 128
+	Cte -> 163
+
+
+S124{
+	Termino : Factor •Recterm «ex»
+	Termino : Factor• «ex»
+	Termino : Factor •Recterm «rightpar»
+	Termino : Factor• «rightpar»
+	Recterm : •term Termino «ex»
+	Recterm : •term Termino «rightpar»
+}
+Transitions:
+	Recterm -> 164
+	term -> 165
+
+
+S125{
+	Factor : Cte• «term»
+	Factor : Cte• «ex»
+	Factor : Cte• «rightpar»
+}
+Transitions:
+
+
+S126{
+	Cte : string• «term»
+	Cte : string• «ex»
+	Cte : string• «rightpar»
+}
+Transitions:
+
+
+S127{
+	Cte : int• «term»
+	Cte : int• «ex»
+	Cte : int• «rightpar»
+}
+Transitions:
+
+
+S128{
+	Cte : float• «term»
+	Cte : float• «ex»
+	Cte : float• «rightpar»
+}
+Transitions:
+
+
+S129{
+	Expresion : Exp greater Exp• «rightpar»
+}
+Transitions:
+
+
+S130{
+	Expresion : Exp diff Exp• «rightpar»
+}
+Transitions:
+
+
+S131{
+	Factor : leftpar Expresion rightpar• «term»
+	Factor : leftpar Expresion rightpar• «ex»
+	Factor : leftpar Expresion rightpar• «less»
+	Factor : leftpar Expresion rightpar• «greater»
+	Factor : leftpar Expresion rightpar• «diff»
+	Factor : leftpar Expresion rightpar• «rightpar»
+}
+Transitions:
+
+
+S132{
+	Recexp : ex Exp• «less»
+	Recexp : ex Exp• «greater»
+	Recexp : ex Exp• «diff»
+	Recexp : ex Exp• «rightpar»
+}
+Transitions:
+
+
+S133{
+	Recterm : term Termino• «ex»
+	Recterm : term Termino• «less»
+	Recterm : term Termino• «greater»
+	Recterm : term Termino• «diff»
+	Recterm : term Termino• «rightpar»
+}
+Transitions:
+
+
+S134{
+	Recesc : Expresion comma Recesc• «rightpar»
+}
+Transitions:
+
+
+S135{
+	Cte : id• «term»
+	Cte : id• «ex»
+	Cte : id• «comma»
+	Cte : id• «rightpar»
+}
+Transitions:
+
+
+S136{
+	Expresion : Exp less Exp• «comma»
+	Expresion : Exp less Exp• «rightpar»
+}
+Transitions:
+
+
+S137{
+	Factor : leftpar •Expresion rightpar «term»
+	Factor : leftpar •Expresion rightpar «ex»
+	Factor : leftpar •Expresion rightpar «comma»
+	Factor : leftpar •Expresion rightpar «rightpar»
+	Expresion : •Exp less Exp «rightpar»
+	Expresion : •Exp greater Exp «rightpar»
+	Expresion : •Exp diff Exp «rightpar»
+	Expresion : •Exp «rightpar»
+	Exp : •Termino Recexp «less»
+	Exp : •Termino «less»
+	Exp : •Termino Recexp «greater»
+	Exp : •Termino «greater»
+	Exp : •Termino Recexp «diff»
+	Exp : •Termino «diff»
+	Exp : •Termino Recexp «rightpar»
+	Exp : •Termino «rightpar»
+	Termino : •Factor Recterm «ex»
+	Termino : •Factor «ex»
+	Termino : •Factor Recterm «less»
+	Termino : •Factor «less»
+	Termino : •Factor Recterm «greater»
+	Termino : •Factor «greater»
+	Termino : •Factor Recterm «diff»
+	Termino : •Factor «diff»
+	Termino : •Factor Recterm «rightpar»
+	Termino : •Factor «rightpar»
+	Factor : •leftpar Expresion rightpar «term»
+	Factor : •ex Cte «term»
+	Factor : •Cte «term»
+	Factor : •leftpar Expresion rightpar «ex»
+	Factor : •ex Cte «ex»
+	Factor : •Cte «ex»
+	Factor : •leftpar Expresion rightpar «less»
+	Factor : •ex Cte «less»
+	Factor : •Cte «less»
+	Factor : •leftpar Expresion rightpar «greater»
+	Factor : •ex Cte «greater»
+	Factor : •Cte «greater»
+	Factor : •leftpar Expresion rightpar «diff»
+	Factor : •ex Cte «diff»
+	Factor : •Cte «diff»
+	Factor : •leftpar Expresion rightpar «rightpar»
+	Factor : •ex Cte «rightpar»
+	Factor : •Cte «rightpar»
+	Cte : •id «term»
+	Cte : •int «term»
+	Cte : •string «term»
+	Cte : •float «term»
+	Cte : •id «ex»
+	Cte : •int «ex»
+	Cte : •string «ex»
+	Cte : •float «ex»
+	Cte : •id «less»
+	Cte : •int «less»
+	Cte : •string «less»
+	Cte : •float «less»
+	Cte : •id «greater»
+	Cte : •int «greater»
+	Cte : •string «greater»
+	Cte : •float «greater»
+	Cte : •id «diff»
+	Cte : •int «diff»
+	Cte : •string «diff»
+	Cte : •float «diff»
+	Cte : •id «rightpar»
+	Cte : •int «rightpar»
+	Cte : •string «rightpar»
+	Cte : •float «rightpar»
+}
+Transitions:
+	id -> 45
+	Exp -> 47
+	leftpar -> 48
+	Termino -> 49
+	ex -> 50
+	Factor -> 51
+	Cte -> 52
+	string -> 53
+	int -> 54
+	float -> 55
+	Expresion -> 166
+
+
+S138{
+	Exp : Termino •Recexp «comma»
+	Exp : Termino• «comma»
+	Exp : Termino •Recexp «rightpar»
+	Exp : Termino• «rightpar»
+	Recexp : •ex Exp «comma»
+	Recexp : •ex Exp «rightpar»
+}
+Transitions:
+	Recexp -> 167
+	ex -> 168
+
+
+S139{
+	Factor : ex •Cte «term»
+	Factor : ex •Cte «ex»
+	Factor : ex •Cte «comma»
+	Factor : ex •Cte «rightpar»
+	Cte : •id «term»
+	Cte : •int «term»
+	Cte : •string «term»
+	Cte : •float «term»
+	Cte : •id «ex»
+	Cte : •int «ex»
+	Cte : •string «ex»
+	Cte : •float «ex»
+	Cte : •id «comma»
+	Cte : •int «comma»
+	Cte : •string «comma»
+	Cte : •float «comma»
+	Cte : •id «rightpar»
+	Cte : •int «rightpar»
+	Cte : •string «rightpar»
+	Cte : •float «rightpar»
+}
+Transitions:
+	id -> 135
+	string -> 142
+	int -> 143
+	float -> 144
+	Cte -> 169
+
+
+S140{
+	Termino : Factor •Recterm «ex»
+	Termino : Factor• «ex»
+	Termino : Factor •Recterm «comma»
+	Termino : Factor• «comma»
+	Termino : Factor •Recterm «rightpar»
+	Termino : Factor• «rightpar»
+	Recterm : •term Termino «ex»
+	Recterm : •term Termino «comma»
+	Recterm : •term Termino «rightpar»
+}
+Transitions:
+	Recterm -> 170
+	term -> 171
+
+
+S141{
+	Factor : Cte• «term»
+	Factor : Cte• «ex»
+	Factor : Cte• «comma»
+	Factor : Cte• «rightpar»
+}
+Transitions:
+
+
+S142{
+	Cte : string• «term»
+	Cte : string• «ex»
+	Cte : string• «comma»
+	Cte : string• «rightpar»
+}
+Transitions:
+
+
+S143{
+	Cte : int• «term»
+	Cte : int• «ex»
+	Cte : int• «comma»
+	Cte : int• «rightpar»
+}
+Transitions:
+
+
+S144{
+	Cte : float• «term»
+	Cte : float• «ex»
+	Cte : float• «comma»
+	Cte : float• «rightpar»
+}
+Transitions:
+
+
+S145{
+	Expresion : Exp greater Exp• «comma»
+	Expresion : Exp greater Exp• «rightpar»
+}
+Transitions:
+
+
+S146{
+	Expresion : Exp diff Exp• «comma»
+	Expresion : Exp diff Exp• «rightpar»
+}
+Transitions:
+
+
+S147{
+	Factor : leftpar Expresion rightpar• «term»
+	Factor : leftpar Expresion rightpar• «ex»
+	Factor : leftpar Expresion rightpar• «less»
+	Factor : leftpar Expresion rightpar• «greater»
+	Factor : leftpar Expresion rightpar• «diff»
+	Factor : leftpar Expresion rightpar• «comma»
+	Factor : leftpar Expresion rightpar• «rightpar»
+}
+Transitions:
+
+
+S148{
+	Recexp : ex Exp• «less»
+	Recexp : ex Exp• «greater»
+	Recexp : ex Exp• «diff»
+	Recexp : ex Exp• «comma»
+	Recexp : ex Exp• «rightpar»
+}
+Transitions:
+
+
+S149{
+	Recterm : term Termino• «ex»
+	Recterm : term Termino• «less»
+	Recterm : term Termino• «greater»
+	Recterm : term Termino• «diff»
+	Recterm : term Termino• «comma»
+	Recterm : term Termino• «rightpar»
+}
+Transitions:
+
+
+S150{
+	Escritura : print leftpar Recesc rightpar semcolon• «id»
+	Escritura : print leftpar Recesc rightpar semcolon• «if»
+	Escritura : print leftpar Recesc rightpar semcolon• «print»
+	Escritura : print leftpar Recesc rightpar semcolon• «rightkey»
+}
+Transitions:
+
+
+S151{
+	Recesc : string comma Recesc• «rightpar»
+}
+Transitions:
+
+
+S152{
+	Factor : leftpar Expresion •rightpar «term»
+	Factor : leftpar Expresion •rightpar «ex»
+	Factor : leftpar Expresion •rightpar «semcolon»
+}
+Transitions:
+	rightpar -> 172
+
+
+S153{
+	Exp : Termino Recexp• «semcolon»
+}
+Transitions:
+
+
+S154{
+	Recexp : ex •Exp «semcolon»
+	Exp : •Termino Recexp «semcolon»
+	Exp : •Termino «semcolon»
+	Termino : •Factor Recterm «ex»
+	Termino : •Factor «ex»
+	Termino : •Factor Recterm «semcolon»
+	Termino : •Factor «semcolon»
+	Factor : •leftpar Expresion rightpar «term»
+	Factor : •ex Cte «term»
+	Factor : •Cte «term»
+	Factor : •leftpar Expresion rightpar «ex»
+	Factor : •ex Cte «ex»
+	Factor : •Cte «ex»
+	Factor : •leftpar Expresion rightpar «semcolon»
+	Factor : •ex Cte «semcolon»
+	Factor : •Cte «semcolon»
+	Cte : •id «term»
+	Cte : •int «term»
+	Cte : •string «term»
+	Cte : •float «term»
+	Cte : •id «ex»
+	Cte : •int «ex»
+	Cte : •string «ex»
+	Cte : •float «ex»
+	Cte : •id «semcolon»
+	Cte : •int «semcolon»
+	Cte : •string «semcolon»
+	Cte : •float «semcolon»
+}
+Transitions:
+	id -> 103
+	leftpar -> 105
+	Termino -> 106
+	ex -> 107
+	Factor -> 108
+	Cte -> 109
+	string -> 110
+	int -> 111
+	float -> 112
+	Exp -> 173
+
+
+S155{
+	Factor : ex Cte• «term»
+	Factor : ex Cte• «ex»
+	Factor : ex Cte• «semcolon»
+}
+Transitions:
+
+
+S156{
+	Termino : Factor Recterm• «ex»
+	Termino : Factor Recterm• «semcolon»
+}
+Transitions:
+
+
+S157{
+	Recterm : term •Termino «ex»
+	Recterm : term •Termino «semcolon»
+	Termino : •Factor Recterm «ex»
+	Termino : •Factor «ex»
+	Termino : •Factor Recterm «semcolon»
+	Termino : •Factor «semcolon»
+	Factor : •leftpar Expresion rightpar «term»
+	Factor : •ex Cte «term»
+	Factor : •Cte «term»
+	Factor : •leftpar Expresion rightpar «ex»
+	Factor : •ex Cte «ex»
+	Factor : •Cte «ex»
+	Factor : •leftpar Expresion rightpar «semcolon»
+	Factor : •ex Cte «semcolon»
+	Factor : •Cte «semcolon»
+	Cte : •id «term»
+	Cte : •int «term»
+	Cte : •string «term»
+	Cte : •float «term»
+	Cte : •id «ex»
+	Cte : •int «ex»
+	Cte : •string «ex»
+	Cte : •float «ex»
+	Cte : •id «semcolon»
+	Cte : •int «semcolon»
+	Cte : •string «semcolon»
+	Cte : •float «semcolon»
+}
+Transitions:
+	id -> 103
+	leftpar -> 105
+	ex -> 107
+	Factor -> 108
+	Cte -> 109
+	string -> 110
+	int -> 111
+	float -> 112
+	Termino -> 174
+
+
+S158{
+	Condicion : if leftpar Expresion rightpar then Bloque •semcolon «id»
+	Condicion : if leftpar Expresion rightpar then Bloque •else Bloque semcolon «id»
+	Condicion : if leftpar Expresion rightpar then Bloque •semcolon «if»
+	Condicion : if leftpar Expresion rightpar then Bloque •else Bloque semcolon «if»
+	Condicion : if leftpar Expresion rightpar then Bloque •semcolon «print»
+	Condicion : if leftpar Expresion rightpar then Bloque •else Bloque semcolon «print»
+	Condicion : if leftpar Expresion rightpar then Bloque •semcolon «rightkey»
+	Condicion : if leftpar Expresion rightpar then Bloque •else Bloque semcolon «rightkey»
+}
+Transitions:
+	semcolon -> 175
+	else -> 176
+
+
+S159{
+	Bloque : leftkey •Estatutos rightkey «semcolon»
+	Bloque : leftkey •rightkey «semcolon»
+	Bloque : leftkey •Estatutos rightkey «else»
+	Bloque : leftkey •rightkey «else»
+	Estatutos : •Estatuto Estatutos «rightkey»
+	Estatutos : •Estatuto «rightkey»
+	Estatuto : •Asignacion «id»
+	Estatuto : •Asignacion «if»
+	Estatuto : •Asignacion «print»
+	Estatuto : •Escritura «id»
+	Estatuto : •Escritura «if»
+	Estatuto : •Escritura «print»
+	Estatuto : •Condicion «id»
+	Estatuto : •Condicion «if»
+	Estatuto : •Condicion «print»
+	Estatuto : •Asignacion «rightkey»
+	Estatuto : •Escritura «rightkey»
+	Estatuto : •Condicion «rightkey»
+	Asignacion : •id equals Expresion semcolon «id»
+	Asignacion : •id equals Expresion semcolon «if»
+	Asignacion : •id equals Expresion semcolon «print»
+	Escritura : •print leftpar Recesc rightpar semcolon «id»
+	Escritura : •print leftpar Recesc rightpar semcolon «if»
+	Escritura : •print leftpar Recesc rightpar semcolon «print»
+	Condicion : •if leftpar Expresion rightpar then Bloque semcolon «id»
+	Condicion : •if leftpar Expresion rightpar then Bloque else Bloque semcolon «id»
+	Condicion : •if leftpar Expresion rightpar then Bloque semcolon «if»
+	Condicion : •if leftpar Expresion rightpar then Bloque else Bloque semcolon «if»
+	Condicion : •if leftpar Expresion rightpar then Bloque semcolon «print»
+	Condicion : •if leftpar Expresion rightpar then Bloque else Bloque semcolon «print»
+	Asignacion : •id equals Expresion semcolon «rightkey»
+	Escritura : •print leftpar Recesc rightpar semcolon «rightkey»
+	Condicion : •if leftpar Expresion rightpar then Bloque semcolon «rightkey»
+	Condicion : •if leftpar Expresion rightpar then Bloque else Bloque semcolon «rightkey»
+}
+Transitions:
+	id -> 13
+	Estatuto -> 16
+	Asignacion -> 17
+	Escritura -> 18
+	Condicion -> 19
+	if -> 20
+	print -> 21
+	Estatutos -> 177
+	rightkey -> 178
+
+
+S160{
+	Factor : leftpar Expresion •rightpar «term»
+	Factor : leftpar Expresion •rightpar «ex»
+	Factor : leftpar Expresion •rightpar «rightpar»
+}
+Transitions:
+	rightpar -> 179
+
+
+S161{
+	Exp : Termino Recexp• «rightpar»
+}
+Transitions:
+
+
+S162{
+	Recexp : ex •Exp «rightpar»
+	Exp : •Termino Recexp «rightpar»
+	Exp : •Termino «rightpar»
+	Termino : •Factor Recterm «ex»
+	Termino : •Factor «ex»
+	Termino : •Factor Recterm «rightpar»
+	Termino : •Factor «rightpar»
+	Factor : •leftpar Expresion rightpar «term»
+	Factor : •ex Cte «term»
+	Factor : •Cte «term»
+	Factor : •leftpar Expresion rightpar «ex»
+	Factor : •ex Cte «ex»
+	Factor : •Cte «ex»
+	Factor : •leftpar Expresion rightpar «rightpar»
+	Factor : •ex Cte «rightpar»
+	Factor : •Cte «rightpar»
+	Cte : •id «term»
+	Cte : •int «term»
+	Cte : •string «term»
+	Cte : •float «term»
+	Cte : •id «ex»
+	Cte : •int «ex»
+	Cte : •string «ex»
+	Cte : •float «ex»
+	Cte : •id «rightpar»
+	Cte : •int «rightpar»
+	Cte : •string «rightpar»
+	Cte : •float «rightpar»
+}
+Transitions:
+	id -> 119
+	leftpar -> 121
+	Termino -> 122
+	ex -> 123
+	Factor -> 124
+	Cte -> 125
+	string -> 126
+	int -> 127
+	float -> 128
+	Exp -> 180
+
+
+S163{
+	Factor : ex Cte• «term»
+	Factor : ex Cte• «ex»
+	Factor : ex Cte• «rightpar»
+}
+Transitions:
+
+
+S164{
+	Termino : Factor Recterm• «ex»
+	Termino : Factor Recterm• «rightpar»
+}
+Transitions:
+
+
+S165{
+	Recterm : term •Termino «ex»
+	Recterm : term •Termino «rightpar»
+	Termino : •Factor Recterm «ex»
+	Termino : •Factor «ex»
+	Termino : •Factor Recterm «rightpar»
+	Termino : •Factor «rightpar»
+	Factor : •leftpar Expresion rightpar «term»
+	Factor : •ex Cte «term»
+	Factor : •Cte «term»
+	Factor : •leftpar Expresion rightpar «ex»
+	Factor : •ex Cte «ex»
+	Factor : •Cte «ex»
+	Factor : •leftpar Expresion rightpar «rightpar»
+	Factor : •ex Cte «rightpar»
+	Factor : •Cte «rightpar»
+	Cte : •id «term»
+	Cte : •int «term»
+	Cte : •string «term»
+	Cte : •float «term»
+	Cte : •id «ex»
+	Cte : •int «ex»
+	Cte : •string «ex»
+	Cte : •float «ex»
+	Cte : •id «rightpar»
+	Cte : •int «rightpar»
+	Cte : •string «rightpar»
+	Cte : •float «rightpar»
+}
+Transitions:
+	id -> 119
+	leftpar -> 121
+	ex -> 123
+	Factor -> 124
+	Cte -> 125
+	string -> 126
+	int -> 127
+	float -> 128
+	Termino -> 181
+
+
+S166{
+	Factor : leftpar Expresion •rightpar «term»
+	Factor : leftpar Expresion •rightpar «ex»
+	Factor : leftpar Expresion •rightpar «comma»
+	Factor : leftpar Expresion •rightpar «rightpar»
+}
+Transitions:
+	rightpar -> 182
+
+
+S167{
+	Exp : Termino Recexp• «comma»
+	Exp : Termino Recexp• «rightpar»
+}
+Transitions:
+
+
+S168{
+	Recexp : ex •Exp «comma»
+	Recexp : ex •Exp «rightpar»
+	Exp : •Termino Recexp «comma»
+	Exp : •Termino «comma»
+	Exp : •Termino Recexp «rightpar»
+	Exp : •Termino «rightpar»
+	Termino : •Factor Recterm «ex»
+	Termino : •Factor «ex»
+	Termino : •Factor Recterm «comma»
+	Termino : •Factor «comma»
+	Termino : •Factor Recterm «rightpar»
+	Termino : •Factor «rightpar»
+	Factor : •leftpar Expresion rightpar «term»
+	Factor : •ex Cte «term»
+	Factor : •Cte «term»
+	Factor : •leftpar Expresion rightpar «ex»
+	Factor : •ex Cte «ex»
+	Factor : •Cte «ex»
+	Factor : •leftpar Expresion rightpar «comma»
+	Factor : •ex Cte «comma»
+	Factor : •Cte «comma»
+	Factor : •leftpar Expresion rightpar «rightpar»
+	Factor : •ex Cte «rightpar»
+	Factor : •Cte «rightpar»
+	Cte : •id «term»
+	Cte : •int «term»
+	Cte : •string «term»
+	Cte : •float «term»
+	Cte : •id «ex»
+	Cte : •int «ex»
+	Cte : •string «ex»
+	Cte : •float «ex»
+	Cte : •id «comma»
+	Cte : •int «comma»
+	Cte : •string «comma»
+	Cte : •float «comma»
+	Cte : •id «rightpar»
+	Cte : •int «rightpar»
+	Cte : •string «rightpar»
+	Cte : •float «rightpar»
+}
+Transitions:
+	id -> 135
+	leftpar -> 137
+	Termino -> 138
+	ex -> 139
+	Factor -> 140
+	Cte -> 141
+	string -> 142
+	int -> 143
+	float -> 144
+	Exp -> 183
+
+
+S169{
+	Factor : ex Cte• «term»
+	Factor : ex Cte• «ex»
+	Factor : ex Cte• «comma»
+	Factor : ex Cte• «rightpar»
+}
+Transitions:
+
+
+S170{
+	Termino : Factor Recterm• «ex»
+	Termino : Factor Recterm• «comma»
+	Termino : Factor Recterm• «rightpar»
+}
+Transitions:
+
+
+S171{
+	Recterm : term •Termino «ex»
+	Recterm : term •Termino «comma»
+	Recterm : term •Termino «rightpar»
+	Termino : •Factor Recterm «ex»
+	Termino : •Factor «ex»
+	Termino : •Factor Recterm «comma»
+	Termino : •Factor «comma»
+	Termino : •Factor Recterm «rightpar»
+	Termino : •Factor «rightpar»
+	Factor : •leftpar Expresion rightpar «term»
+	Factor : •ex Cte «term»
+	Factor : •Cte «term»
+	Factor : •leftpar Expresion rightpar «ex»
+	Factor : •ex Cte «ex»
+	Factor : •Cte «ex»
+	Factor : •leftpar Expresion rightpar «comma»
+	Factor : •ex Cte «comma»
+	Factor : •Cte «comma»
+	Factor : •leftpar Expresion rightpar «rightpar»
+	Factor : •ex Cte «rightpar»
+	Factor : •Cte «rightpar»
+	Cte : •id «term»
+	Cte : •int «term»
+	Cte : •string «term»
+	Cte : •float «term»
+	Cte : •id «ex»
+	Cte : •int «ex»
+	Cte : •string «ex»
+	Cte : •float «ex»
+	Cte : •id «comma»
+	Cte : •int «comma»
+	Cte : •string «comma»
+	Cte : •float «comma»
+	Cte : •id «rightpar»
+	Cte : •int «rightpar»
+	Cte : •string «rightpar»
+	Cte : •float «rightpar»
+}
+Transitions:
+	id -> 135
+	leftpar -> 137
+	ex -> 139
+	Factor -> 140
+	Cte -> 141
+	string -> 142
+	int -> 143
+	float -> 144
+	Termino -> 184
+
+
+S172{
+	Factor : leftpar Expresion rightpar• «term»
+	Factor : leftpar Expresion rightpar• «ex»
+	Factor : leftpar Expresion rightpar• «semcolon»
+}
+Transitions:
+
+
+S173{
+	Recexp : ex Exp• «semcolon»
+}
+Transitions:
+
+
+S174{
+	Recterm : term Termino• «ex»
+	Recterm : term Termino• «semcolon»
+}
+Transitions:
+
+
+S175{
+	Condicion : if leftpar Expresion rightpar then Bloque semcolon• «id»
+	Condicion : if leftpar Expresion rightpar then Bloque semcolon• «if»
+	Condicion : if leftpar Expresion rightpar then Bloque semcolon• «print»
+	Condicion : if leftpar Expresion rightpar then Bloque semcolon• «rightkey»
+}
+Transitions:
+
+
+S176{
+	Condicion : if leftpar Expresion rightpar then Bloque else •Bloque semcolon «id»
+	Condicion : if leftpar Expresion rightpar then Bloque else •Bloque semcolon «if»
+	Condicion : if leftpar Expresion rightpar then Bloque else •Bloque semcolon «print»
+	Condicion : if leftpar Expresion rightpar then Bloque else •Bloque semcolon «rightkey»
+	Bloque : •leftkey Estatutos rightkey «semcolon»
+	Bloque : •leftkey rightkey «semcolon»
+}
+Transitions:
+	Bloque -> 185
+	leftkey -> 186
+
+
+S177{
+	Bloque : leftkey Estatutos •rightkey «semcolon»
+	Bloque : leftkey Estatutos •rightkey «else»
+}
+Transitions:
+	rightkey -> 187
+
+
+S178{
+	Bloque : leftkey rightkey• «semcolon»
+	Bloque : leftkey rightkey• «else»
+}
+Transitions:
+
+
+S179{
+	Factor : leftpar Expresion rightpar• «term»
+	Factor : leftpar Expresion rightpar• «ex»
+	Factor : leftpar Expresion rightpar• «rightpar»
+}
+Transitions:
+
+
+S180{
+	Recexp : ex Exp• «rightpar»
+}
+Transitions:
+
+
+S181{
+	Recterm : term Termino• «ex»
+	Recterm : term Termino• «rightpar»
+}
+Transitions:
+
+
+S182{
+	Factor : leftpar Expresion rightpar• «term»
+	Factor : leftpar Expresion rightpar• «ex»
+	Factor : leftpar Expresion rightpar• «comma»
+	Factor : leftpar Expresion rightpar• «rightpar»
+}
+Transitions:
+
+
+S183{
+	Recexp : ex Exp• «comma»
+	Recexp : ex Exp• «rightpar»
+}
+Transitions:
+
+
+S184{
+	Recterm : term Termino• «ex»
+	Recterm : term Termino• «comma»
+	Recterm : term Termino• «rightpar»
+}
+Transitions:
+
+
+S185{
+	Condicion : if leftpar Expresion rightpar then Bloque else Bloque •semcolon «id»
+	Condicion : if leftpar Expresion rightpar then Bloque else Bloque •semcolon «if»
+	Condicion : if leftpar Expresion rightpar then Bloque else Bloque •semcolon «print»
+	Condicion : if leftpar Expresion rightpar then Bloque else Bloque •semcolon «rightkey»
+}
+Transitions:
+	semcolon -> 188
+
+
+S186{
+	Bloque : leftkey •Estatutos rightkey «semcolon»
+	Bloque : leftkey •rightkey «semcolon»
+	Estatutos : •Estatuto Estatutos «rightkey»
+	Estatutos : •Estatuto «rightkey»
+	Estatuto : •Asignacion «id»
+	Estatuto : •Asignacion «if»
+	Estatuto : •Asignacion «print»
+	Estatuto : •Escritura «id»
+	Estatuto : •Escritura «if»
+	Estatuto : •Escritura «print»
+	Estatuto : •Condicion «id»
+	Estatuto : •Condicion «if»
+	Estatuto : •Condicion «print»
+	Estatuto : •Asignacion «rightkey»
+	Estatuto : •Escritura «rightkey»
+	Estatuto : •Condicion «rightkey»
+	Asignacion : •id equals Expresion semcolon «id»
+	Asignacion : •id equals Expresion semcolon «if»
+	Asignacion : •id equals Expresion semcolon «print»
+	Escritura : •print leftpar Recesc rightpar semcolon «id»
+	Escritura : •print leftpar Recesc rightpar semcolon «if»
+	Escritura : •print leftpar Recesc rightpar semcolon «print»
+	Condicion : •if leftpar Expresion rightpar then Bloque semcolon «id»
+	Condicion : •if leftpar Expresion rightpar then Bloque else Bloque semcolon «id»
+	Condicion : •if leftpar Expresion rightpar then Bloque semcolon «if»
+	Condicion : •if leftpar Expresion rightpar then Bloque else Bloque semcolon «if»
+	Condicion : •if leftpar Expresion rightpar then Bloque semcolon «print»
+	Condicion : •if leftpar Expresion rightpar then Bloque else Bloque semcolon «print»
+	Asignacion : •id equals Expresion semcolon «rightkey»
+	Escritura : •print leftpar Recesc rightpar semcolon «rightkey»
+	Condicion : •if leftpar Expresion rightpar then Bloque semcolon «rightkey»
+	Condicion : •if leftpar Expresion rightpar then Bloque else Bloque semcolon «rightkey»
+}
+Transitions:
+	id -> 13
+	Estatuto -> 16
+	Asignacion -> 17
+	Escritura -> 18
+	Condicion -> 19
+	if -> 20
+	print -> 21
+	Estatutos -> 189
+	rightkey -> 190
+
+
+S187{
+	Bloque : leftkey Estatutos rightkey• «semcolon»
+	Bloque : leftkey Estatutos rightkey• «else»
+}
+Transitions:
+
+
+S188{
+	Condicion : if leftpar Expresion rightpar then Bloque else Bloque semcolon• «id»
+	Condicion : if leftpar Expresion rightpar then Bloque else Bloque semcolon• «if»
+	Condicion : if leftpar Expresion rightpar then Bloque else Bloque semcolon• «print»
+	Condicion : if leftpar Expresion rightpar then Bloque else Bloque semcolon• «rightkey»
+}
+Transitions:
+
+
+S189{
+	Bloque : leftkey Estatutos •rightkey «semcolon»
+}
+Transitions:
+	rightkey -> 191
+
+
+S190{
+	Bloque : leftkey rightkey• «semcolon»
+}
+Transitions:
+
+
+S191{
+	Bloque : leftkey Estatutos rightkey• «semcolon»
+}
+Transitions:
+
+
