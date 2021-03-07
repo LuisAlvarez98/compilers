@@ -33,7 +33,7 @@ func readFile(path string) ([]byte, error) {
     return buffer, nil
 }
 
-func ParseTest(t *testing.T) {
+func TestDuck(t *testing.T) {
     p := parser.NewParser()
     tests := []string {
         "p.duck",
